@@ -21,8 +21,7 @@ const ProjectCreate = (props) => {
   data.forEach((data) => {
     choices.push({ id: data.id, name: data.personName });
   });
-  console.log('choices', choices);
-  console.log(choices[1].name);
+
   return (
     <Create title='Add a project' {...props}>
       <SimpleForm>
@@ -43,3 +42,4 @@ const ProjectCreate = (props) => {
 };
 
 export default ProjectCreate;
+

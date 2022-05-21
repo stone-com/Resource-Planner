@@ -11,10 +11,6 @@ import {
 } from 'react-admin';
 
 const ProjectList = (props) => {
-  const { data } = useGetList('projects', {
-    pagination: { page: 1, perPage: 10 },
-  });
-  console.log(data);
   return (
     <List {...props}>
       <Datagrid>
