@@ -18,9 +18,9 @@ const ProjectCreate = (props) => {
   //   declare choices variable
   let choices = [];
     // push object with id and name into choices array for each resources
-  data.forEach((data) => {
-    choices.push({ id: data.id, name: data.personName });
-  });
+    data.forEach((data) => {
+        choices.push({ id: data.id, name: data.personName });
+      });
 
   return (
     <Create title='Add a project' {...props}>
