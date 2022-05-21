@@ -11,19 +11,24 @@
       "availability": "25"
     },
     {
-      "id": "1",
+      "id": "3",
       "personName": "Cheng",
       "availability": "0"
     },
     {
-      "id": "1",
+      "id": "4",
       "personName": "Namees",
       "availability": "100"
     },
     {
-      "id": "1",
+      "id": "5",
       "personName": "Brian",
       "availability": "50"
+    },
+    {
+      "id": "6",
+      "personName": "Mary",
+      "availability": "25"
     }
   ],
   "projects": [
@@ -34,7 +39,10 @@
       "requiredResources": "2",
       "completed": "false",
       "createdAt": "  2022-05-20",
-      "assignedResources": ["1", "4"]
+      "assignedResources": [
+        "1",
+        "4"
+      ]
     },
     {
       "title": "Event Planner",
@@ -43,7 +51,10 @@
       "requiredResources": "2",
       "completed": "false",
       "createdAt": "  2022-05-01",
-      "assignedResources": ["2", "3"]
+      "assignedResources": [
+        "2",
+        "3"
+      ]
     },
     {
       "title": "API Back End",
@@ -52,7 +63,9 @@
       "requiredResources": "1",
       "completed": "false",
       "createdAt": "  2022-05-08",
-      "assignedResources": ["5"]
+      "assignedResources": [
+        "5"
+      ]
     }
   ]
 }

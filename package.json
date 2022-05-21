@@ -4,7 +4,9 @@
   "description": "test",
   "main": "index.js",
   "scripts": {
-    "server": "json-server --watch db.json --port 5000"
+    "server": "json-server --watch db.json --port 4000",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
@@ -16,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/stone-com/Resource-Planner/issues"
   },
-  "homepage": "https://github.com/stone-com/Resource-Planner#readme"
+  "homepage": "https://github.com/stone-com/Resource-Planner#readme",
+  "dependencies": {
+    "concurrently": "^7.2.0"
+  }
 }
