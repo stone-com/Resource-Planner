@@ -1,8 +1,7 @@
-import { Card, CardContent, CardHeader } from '@mui/material';
+import { Card, CardHeader } from '@mui/material';
 
-export default () => (
-  <Card>
-    <CardHeader title='Resource Planner' />
-    <CardContent>Lorem ipsum sic dolor amet...</CardContent>
+export default ({title}) => (
+  <Card style={{width:'fit-content', margin: 'auto'}}>
+    <CardHeader title={title} />
   </Card>
 );

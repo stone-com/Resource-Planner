@@ -23,39 +23,36 @@ const Dashboard = () => {
 
   return (
     <Container>
-      <Grid container spacing={2}>
+      <Grid container spacing={4}>
         <Grid item xs={12}>
-          <DashboardHeader />
+          <DashboardHeader title={'Summary'} />
         </Grid>
         <Grid item xs={3}>
-          <SummaryCard
-            icon={<ProgressRing />}
-            title={'Total Capacity'}
-            description={'Description'}
-          />
+          <SummaryCard icon={<ProgressRing />} title={'Total Capacity'} />
         </Grid>
         <Grid item xs={3}>
           <SummaryCard
             icon={<SummaryNumber number={data.length} />}
             title={'Total Resources'}
-            description={'Description'}
           />
         </Grid>
         <Grid item xs={3}>
           <SummaryCard
             icon={<SummaryNumber number={12} />}
-            title={'Total Hours Available'}
-            description={'Description'}
+            title={'Hours Available'}
           />
         </Grid>
         <Grid item xs={3}>
           <SummaryCard
             icon={<SummaryNumber number={3} />}
             title={'Resources needed'}
-            description={'Description'}
           />
         </Grid>
+        <Grid item xs={12}>
+        <DashboardHeader title={'Projects'}/>
       </Grid>
+      </Grid>
+      
       <Resource name='projects' list={ProjectList} create={ProjectCreate} />
     </Container>
   );
