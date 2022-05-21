@@ -3,9 +3,10 @@ import {
   List,
   Datagrid,
   TextField,
-  DateField,
   EditButton,
   DeleteButton,
+  BooleanField,
+  NumberField
 } from 'react-admin';
 
 const ResourceList = (props) => {
@@ -13,8 +14,8 @@ const ResourceList = (props) => {
     <List {...props}>
       <Datagrid>
           <TextField source='title' />
-          <TextField source='allocation' />
-          <TextField source='completed' />
+          <NumberField source='allocation' />
+          <BooleanField source='completed' />
           <EditButton basePath='/resources' />
           <DeleteButton basePath='/resources' />
       </Datagrid>
