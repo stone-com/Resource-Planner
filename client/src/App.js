@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+// import react admin
+import { Admin, Resource } from 'react-admin';
+// import rest provider
+import simpleRestProvider from 'ra-data-simple-rest';
+import ProjectList from './components/ProjectList.js';
+import Dashboard from './components/Dashboard.js';
+import ProjectCreate from './components/ProjectCreate.js';
+const dataProvider = simpleRestProvider('http://localhost:3000');
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    // React admin provider, using restprovider and passing in API url.
+    <Admin
+      dashboard={Dashboard}
+      dataProvider={dataProvider}
+      title='Resource Planner'
+    >
+      <Resource name='projects' list={ProjectList} create={ProjectCreate}/>
+    </Admin>
   );
 }
 
