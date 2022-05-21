@@ -40,7 +40,10 @@
       "requiredResources": 2,
       "completed": false,
       "createdAt": "  2022-05-20",
-      "assignedResources": [1, 4]
+      "assignedResources": [
+        1,
+        4
+      ]
     },
     {
       "id": "2",
@@ -50,7 +53,10 @@
       "requiredResources": 2,
       "completed": true,
       "createdAt": "  2022-05-01",
-      "assignedResources": [2, 3]
+      "assignedResources": [
+        2,
+        3
+      ]
     },
     {
       "id": "3",
@@ -61,6 +67,18 @@
       "completed": false,
       "createdAt": "  2022-05-08",
       "assignedResources": []
+    },
+    {
+      "title": "Test Project",
+      "description": "test",
+      "allocation": 25,
+      "requiredResources": 3,
+      "createdAt": "2022-05-19",
+      "assignedResources": [
+        "2",
+        "1"
+      ],
+      "id": "IWt20LV"
     }
   ]
 }

@@ -4,7 +4,7 @@ import { Admin, Resource } from 'react-admin';
 import simpleRestProvider from 'ra-data-simple-rest';
 import ProjectList from './components/ProjectList.js';
 import Dashboard from './components/Dashboard.js';
-
+import ProjectCreate from './components/ProjectCreate.js';
 const dataProvider = simpleRestProvider('http://localhost:3000');
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
       dataProvider={dataProvider}
       title='Resource Planner'
     >
-      <Resource name='projects' list={ProjectList} />
+      <Resource name='projects' list={ProjectList} create={ProjectCreate}/>
     </Admin>
   );
 }

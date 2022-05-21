@@ -1,6 +1,6 @@
 import React from 'react';
-import { useGetList } from 'react-admin';
 import {
+  useGetList,
   Create,
   SimpleForm,
   TextInput,
@@ -11,35 +11,34 @@ import {
 
 const ProjectCreate = (props) => {
   // get list of resources, will be used for select element options in the form
-  const { data } = useGetList('projects', {
+  const { data } = useGetList('resources', {
     pagination: { page: 1, perPage: 10 },
   });
-  console.log(data);
+  console.log('data:',data);
   //   declare choices variable
   let choices = [];
-  //   push object with id and name into choices array for each resources
+    // push object with id and name into choices array for each resources
   data.forEach((data) => {
-    choices.push({ id: data.id, name: data.name });
+    choices.push({ id: data.id, name: data.personName });
   });
-  console.log(choices);
+  console.log('choices', choices);
+  console.log(choices[1].name);
   return (
-    <>
-      <Create title='Add a project' {...props}>
-        <SimpleForm>
-          <TextInput source='title' />
-          <TextInput source='description' />
-          <NumberInput source='allocation' />
-          <NumberInput source='requiredResources' />
-          <DateInput source='createdAt' />
-          <SelectArrayInput
-            label='Resources'
-            source='assignedResources'
-            // pass in choices array to choices for select
-            choices={choices}
-          />
-        </SimpleForm>
-      </Create>
-    </>
+    <Create title='Add a project' {...props}>
+      <SimpleForm>
+        <TextInput source='title' />
+        <TextInput source='description' />
+        <NumberInput source='allocation' />
+        <NumberInput source='requiredResources' />
+        <DateInput label='Start Date' source='createdAt' />
+        <SelectArrayInput
+          label='Resources'
+          source='assignedResources'
+          // pass in choices array to choices for select
+          choices={choices}
+        />
+      </SimpleForm>
+    </Create>
   );
 };
 

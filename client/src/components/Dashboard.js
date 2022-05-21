@@ -41,7 +41,6 @@ export default () => (
         />
       </Grid>
     </Grid>
-
     <Resource name='projects' list={ProjectList} create={ProjectCreate} />
   </Container>
 );

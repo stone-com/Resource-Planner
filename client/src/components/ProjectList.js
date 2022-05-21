@@ -1,5 +1,5 @@
 import React from 'react';
-import { useGetList, useDataProvider } from 'react-admin';
+import { useGetList } from 'react-admin';
 import {
   List,
   Datagrid,
