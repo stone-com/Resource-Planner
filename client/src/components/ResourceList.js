@@ -7,11 +7,10 @@ import {
   ChipField,
   ReferenceManyField,
   SingleFieldList,
-  FunctionField,
   useRecordContext,
 } from 'react-admin';
 import { Line } from 'rc-progress';
-
+// custom progress bar component using Line component, getting record context availability value and passing it in as percent to Line component
 const ProgressBarField = () => {
   const record = useRecordContext();
   return (
@@ -21,7 +20,7 @@ const ProgressBarField = () => {
 const ResourceList = (props) => {
   return (
     <List {...props} exporter={false}>
-      <Datagrid isRowSelectable={false}>
+      <Datagrid isRowSelectable={(record) => !record}>
         <TextField source='personName' label='Name' />
         <ReferenceManyField
           label='Current Projects'
@@ -32,7 +31,7 @@ const ResourceList = (props) => {
             <ChipField source='name' />
           </SingleFieldList>
         </ReferenceManyField>
-        <ProgressBarField label='Capacity'/>
+        <ProgressBarField label='Capacity' />
         <DeleteButton basePath='/resources' />
       </Datagrid>
     </List>

@@ -29,12 +29,6 @@
       "photo": "",
       "personName": "Brian",
       "availability": "50"
-    },
-    {
-      "id": "6",
-      "photo": "",
-      "personName": "Mary",
-      "availability": "25"
     }
   ],
   "projects": [
