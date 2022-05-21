@@ -69,18 +69,6 @@
       "assignedResources": []
     },
     {
-      "title": "Test Project",
-      "description": "test",
-      "allocation": 25,
-      "requiredResources": 3,
-      "createdAt": "2022-05-19",
-      "assignedResources": [
-        "2",
-        "1"
-      ],
-      "id": "IWt20LV"
-    },
-    {
       "title": "xx",
       "description": "ss",
       "allocation": 50,
@@ -91,6 +79,31 @@
         "1"
       ],
       "id": "FCTzmj8"
+    },
+    {
+      "title": "new project",
+      "description": "new",
+      "allocation": 50,
+      "requiredResources": 2,
+      "createdAt": "2022-05-09",
+      "assignedResources": [
+        "2",
+        "4",
+        "1"
+      ],
+      "id": "imggsAg"
+    },
+    {
+      "title": "Stone",
+      "description": "PRoject",
+      "allocation": 25,
+      "requiredResources": 4,
+      "createdAt": "2022-05-25",
+      "assignedResources": [
+        "4",
+        "6"
+      ],
+      "id": "d7OuDXV"
     }
   ]
 }

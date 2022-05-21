@@ -11,16 +11,19 @@ import {
 
 const ProjectCreate = (props) => {
   // get list of resources, will be used for select element options in the form
-  const { data } = useGetList('resources', {
+  const { data, isLoading, error } = useGetList('resources', {
     pagination: { page: 1, perPage: 10 },
   });
-  console.log('data:',data);
-  //   declare choices variable
-  let choices = [];
-    // push object with id and name into choices array for each resources
-    data.forEach((data) => {
-        choices.push({ id: data.id, name: data.personName });
-      });
+  if (isLoading) {
+    return <p>LOADING</p>;
+  }
+  if (error) {
+    return <p>ERROR</p>;
+  }
+  console.log('data:', data);
+  const resources = data.map((data) => {
+    return { key: data.id, id: data.id, name: data.personName };
+  });
 
   return (
     <Create title='Add a project' {...props}>
@@ -34,7 +37,7 @@ const ProjectCreate = (props) => {
           label='Resources'
           source='assignedResources'
           // pass in choices array to choices for select
-          choices={choices}
+          choices={resources}
         />
       </SimpleForm>
     </Create>
@@ -42,4 +45,3 @@ const ProjectCreate = (props) => {
 };
 
 export default ProjectCreate;
-
