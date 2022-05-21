@@ -1,5 +1,6 @@
 //User Authentication Model
 const {Schema, model} = require('mongoose');
+
 const userSchema = new Schema({
     //user ID is set to default mongo ids
     //user Name is the user's name
@@ -21,9 +22,15 @@ const userSchema = new Schema({
         minlength: 5,
     },
     customerId:{
-        
+        type: Schema.Types.ObjectId,
+        ref: 'Customer'
     }
 
+},{
+    toJSON: {
+        getters: true,
+        virtuals: true,
+    }
 })
 
 const User = model ('User', userSchema);
