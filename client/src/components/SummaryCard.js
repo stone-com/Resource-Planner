@@ -1,20 +1,20 @@
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import ProgressRing from './ProgressRing';
 
-export default () => {
+// card component, with icon, title, and description props passed in to render the summaries on the dash board.
+export default ({ icon, title, description, number }) => {
   return (
     <Card sx={{ maxWidth: 345 }}>
-      <ProgressRing />
+      {/* If icon prop is passed, render icon, otherwise, number */}
+      {/* Used mainly just for the progress circle in first card. */}
+      {icon ? icon : number}
       <CardContent>
         <Typography gutterBottom variant='h5' component='div'>
-          Lizard
+          {title}
         </Typography>
         <Typography variant='body2' color='text.secondary'>
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
+          {description}
         </Typography>
       </CardContent>
     </Card>
