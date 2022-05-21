@@ -15,8 +15,6 @@ const ProjectList = (props) => {
     pagination: { page: 1, perPage: 10 },
   });
   console.log(data);
-  const dataProvider = useDataProvider();
-  console.log(dataProvider);
   return (
     <List {...props}>
       <Datagrid>
