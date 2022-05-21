@@ -33,39 +33,34 @@
   ],
   "projects": [
     {
+      "id": "1",
       "title": "Movie Tracker",
       "description": "Search movie API's and find movies.",
       "allocation": "50",
       "requiredResources": "2",
       "completed": "false",
       "createdAt": "  2022-05-20",
-      "assignedResources": [
-        "1",
-        "4"
-      ]
+      "assignedResources": ["1", "4"]
     },
     {
+      "id": "2",
       "title": "Event Planner",
       "description": "Plan events",
       "allocation": "25",
       "requiredResources": "2",
       "completed": "false",
       "createdAt": "  2022-05-01",
-      "assignedResources": [
-        "2",
-        "3"
-      ]
+      "assignedResources": ["2", "3"]
     },
     {
+      "id": "3",
       "title": "API Back End",
       "description": "Do back end stuff",
       "allocation": "100",
       "requiredResources": "1",
       "completed": "false",
       "createdAt": "  2022-05-08",
-      "assignedResources": [
-        "5"
-      ]
+      "assignedResources": ["5"]
     }
   ]
 }
