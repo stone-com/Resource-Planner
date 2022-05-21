@@ -1,0 +1,20 @@
+{
+  "name": "resource-planner",
+  "version": "1.0.0",
+  "description": "test",
+  "main": "index.js",
+  "scripts": {
+    "server": "json-server --watch db.json --port 5000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stone-com/Resource-Planner.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stone-com/Resource-Planner/issues"
+  },
+  "homepage": "https://github.com/stone-com/Resource-Planner#readme"
+}
