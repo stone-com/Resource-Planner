@@ -2,31 +2,37 @@
   "resources": [
     {
       "id": "1",
+      "photo": "",
       "personName": "Stone",
       "availability": "50"
     },
     {
       "id": "2",
+      "photo": "",
       "personName": "Mike",
       "availability": "25"
     },
     {
       "id": "3",
+      "photo": "",
       "personName": "Cheng",
       "availability": "0"
     },
     {
       "id": "4",
+      "photo": "",
       "personName": "Namees",
       "availability": "100"
     },
     {
       "id": "5",
+      "photo": "",
       "personName": "Brian",
       "availability": "50"
     },
     {
       "id": "6",
+      "photo": "",
       "personName": "Mary",
       "availability": "25"
     }
@@ -41,9 +47,8 @@
       "completed": false,
       "createdAt": "  2022-05-20",
       "assignedResources": [
-        1,
-        4,
-        "2"
+        "2",
+        "6"
       ]
     },
     {
@@ -51,13 +56,11 @@
       "title": "Event Planner",
       "description": "Plan events",
       "allocation": 25,
-      "requiredResources": 2,
+      "requiredResources": 3,
       "completed": true,
       "createdAt": "  2022-05-01",
       "assignedResources": [
-        2,
-        3,
-        "1"
+        "3"
       ]
     },
     {
@@ -65,10 +68,12 @@
       "title": "API Back End",
       "description": "Do back end stuff",
       "allocation": 100,
-      "requiredResources": "1",
+      "requiredResources": 2,
       "completed": false,
       "createdAt": "  2022-05-08",
-      "assignedResources": []
+      "assignedResources": [
+        "2"
+      ]
     },
     {
       "title": "xx",
@@ -77,9 +82,8 @@
       "requiredResources": 2,
       "createdAt": "2022-05-15",
       "assignedResources": [
-        "3",
-        "1",
-        "2"
+        "5",
+        "6"
       ],
       "id": "FCTzmj8"
     },

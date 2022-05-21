@@ -17,7 +17,8 @@ function App() {
       dataProvider={dataProvider}
       title='Resource Planner'
     >
-      <Resource name='projects' list={ProjectList} create={ProjectCreate} edit={ProjectEdit}/>
+      <Resource name='projects' create={ProjectCreate} edit={ProjectEdit}/>
+      <Resource name='resources' />
     </Admin>
   );
 }
