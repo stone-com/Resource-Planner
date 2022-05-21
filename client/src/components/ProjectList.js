@@ -12,7 +12,7 @@ import {
 
 const ProjectList = (props) => {
   return (
-    <List {...props}>
+    <List {...props} exporter={false}>
       <Datagrid>
         <TextField source='title' />
         <NumberField source='allocation' />

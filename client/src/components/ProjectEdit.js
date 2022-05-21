@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   useGetList,
-  Create,
+  Edit,
   SimpleForm,
   TextInput,
   DateInput,
@@ -10,7 +10,7 @@ import {
 } from 'react-admin';
 import { Container } from '@mui/material';
 
-const ProjectCreate = (props) => {
+const ProjectEdit = (props) => {
   // get list of resources, will be used for select element options in the form
   const { data, isLoading, error } = useGetList('resources', {
     pagination: { page: 1, perPage: 10 },
@@ -25,16 +25,16 @@ const ProjectCreate = (props) => {
   const resources = data.map((data) => {
     return { key: data.id, id: data.id, name: data.personName };
   });
-
+  console.log(props);
   return (
     <Container>
-      <Create title='Add a project' {...props}>
+      <Edit title='Edit project' {...props}>
         <SimpleForm>
-          <TextInput source='title' />
+          <TextInput disabled source='title' />
           <TextInput source='description' />
           <NumberInput source='allocation' />
           <NumberInput source='requiredResources' />
-          <DateInput label='Start Date' source='createdAt' />
+          <DateInput disabled label='Start Date' source='createdAt' />
           <SelectArrayInput
             label='Resources'
             source='assignedResources'
@@ -42,9 +42,9 @@ const ProjectCreate = (props) => {
             choices={resources}
           />
         </SimpleForm>
-      </Create>
+      </Edit>
     </Container>
   );
 };
 
-export default ProjectCreate;
+export default ProjectEdit;

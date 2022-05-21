@@ -5,6 +5,8 @@ import simpleRestProvider from 'ra-data-simple-rest';
 import ProjectList from './components/ProjectList.js';
 import Dashboard from './components/Dashboard.js';
 import ProjectCreate from './components/ProjectCreate.js';
+import ProjectEdit from './components/ProjectEdit.js';
+
 const dataProvider = simpleRestProvider('http://localhost:3000');
 
 function App() {
@@ -15,7 +17,7 @@ function App() {
       dataProvider={dataProvider}
       title='Resource Planner'
     >
-      <Resource name='projects' list={ProjectList} create={ProjectCreate}/>
+      <Resource name='projects' list={ProjectList} create={ProjectCreate} edit={ProjectEdit}/>
     </Admin>
   );
 }
