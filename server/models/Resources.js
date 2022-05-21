@@ -14,10 +14,10 @@ const resourceSchema = new Schema({
         type:Number,
         default:100
     },
-    // assignedProjects:[{
-    //     type:Schema.Types.ObjectId,
-    //     ref:'Project'
-    // }]
+    assignedProjects:[{
+        type:Schema.Types.ObjectId,
+        ref:'Project'
+    }]
  
 });
 
