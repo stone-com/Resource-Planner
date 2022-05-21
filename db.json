@@ -1,0 +1,96 @@
+{
+  "resources": [
+    {
+      "id": "1",
+      "personName": "Stone",
+      "availability": "50"
+    },
+    {
+      "id": "2",
+      "personName": "Mike",
+      "availability": "25"
+    },
+    {
+      "id": "3",
+      "personName": "Cheng",
+      "availability": "0"
+    },
+    {
+      "id": "4",
+      "personName": "Namees",
+      "availability": "100"
+    },
+    {
+      "id": "5",
+      "personName": "Brian",
+      "availability": "50"
+    },
+    {
+      "id": "6",
+      "personName": "Mary",
+      "availability": "25"
+    }
+  ],
+  "projects": [
+    {
+      "id": "1",
+      "title": "Movie Tracker",
+      "description": "Search movie API's and find movies.",
+      "allocation": 50,
+      "requiredResources": 2,
+      "completed": false,
+      "createdAt": "  2022-05-20",
+      "assignedResources": [
+        1,
+        4
+      ]
+    },
+    {
+      "id": "2",
+      "title": "Event Planner",
+      "description": "Plan events",
+      "allocation": 25,
+      "requiredResources": 2,
+      "completed": true,
+      "createdAt": "  2022-05-01",
+      "assignedResources": [
+        2,
+        3
+      ]
+    },
+    {
+      "id": "3",
+      "title": "API Back End",
+      "description": "Do back end stuff",
+      "allocation": 100,
+      "requiredResources": "1",
+      "completed": false,
+      "createdAt": "  2022-05-08",
+      "assignedResources": []
+    },
+    {
+      "title": "Test Project",
+      "description": "test",
+      "allocation": 25,
+      "requiredResources": 3,
+      "createdAt": "2022-05-19",
+      "assignedResources": [
+        "2",
+        "1"
+      ],
+      "id": "IWt20LV"
+    },
+    {
+      "title": "xx",
+      "description": "ss",
+      "allocation": 50,
+      "requiredResources": 2,
+      "createdAt": "2022-05-15",
+      "assignedResources": [
+        "3",
+        "1"
+      ],
+      "id": "FCTzmj8"
+    }
+  ]
+}
