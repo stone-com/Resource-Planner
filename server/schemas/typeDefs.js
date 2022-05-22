@@ -24,6 +24,20 @@ type Resource{
 
 
 }
+
+type User{
+    _id: ID
+    username: String
+    email: String
+    password: String
+    customerId: Customer!
+}
+
+type Customer{
+    customerId: ID
+    customerName: String
+    users: [User]!
+}
  type Query{
   getAllprojects:[Project]!  
   getAllResources:[Resource]! 
