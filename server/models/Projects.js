@@ -30,7 +30,7 @@ type:String
     assignedResources:[{
         
             type: Schema.Types.ObjectId,
-            ref: 'Resources',
+            ref: 'Resource',
             }]
 });
 const Project=model('Project',projectSchema)
