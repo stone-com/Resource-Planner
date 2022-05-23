@@ -30,15 +30,7 @@ const projectSchema = new Schema({
       type: Schema.Types.ObjectId,
       ref: 'Resources',
     },
-<<<<<<< HEAD
-    assignedResources:[{
-        
-            type: Schema.Types.ObjectId,
-            ref: 'Resource',
-            }]
-=======
   ],
->>>>>>> 41b133c875ad5de6f216a89e335421ca907ab7e2
 });
 const Project = model('Project', projectSchema);
 

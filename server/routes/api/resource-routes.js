@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const {
     createResource,getResources,editResource,removeResource,getSingleResource
-  } = require('../../controllers/Resources-controllers');
+  } = require('../../controllers/resource-controllers');
   
   router.route('/').get(getResources);
   router.route('/').post(createResource);
