@@ -2,7 +2,13 @@ import { defaultTheme } from 'react-admin';
 const theme = {
   ...defaultTheme,
   palette: {
-    mode: 'dark', // Switching the dark mode on is a single property value change.
+    type: 'dark',
+    primary: {
+      main: 'rgba(87,255,249,0.53)',
+    },
+    secondary: {
+      main: '#f50057',
+    },
   },
 };
 export default theme;

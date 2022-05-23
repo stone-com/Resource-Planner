@@ -49,6 +49,10 @@
     {
       "personName": "Nolan",
       "id": "k2yVBHU"
+    },
+    {
+      "personName": "David Smith",
+      "id": "DkCB63B"
     }
   ],
   "projects": [
@@ -127,6 +131,17 @@
         "6"
       ],
       "id": "d7OuDXV"
+    },
+    {
+      "title": "",
+      "description": "tester",
+      "allocation": 20,
+      "requiredResources": 2,
+      "createdAt": "2022-05-19",
+      "assignedResources": [
+        "6vz84WD"
+      ],
+      "id": "XTAxMEV"
     }
   ]
 }

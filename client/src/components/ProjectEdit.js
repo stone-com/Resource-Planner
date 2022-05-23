@@ -36,7 +36,7 @@ const ProjectEdit = (props) => {
         <SimpleForm>
           <TextInput disabled source='title'  />
           <TextInput source='description'  />
-          <NumberInput source='allocation'  />
+          <NumberInput source='allocation' step={25}  />
           <NumberInput source='requiredResources'  />
           <DateInput
             disabled
