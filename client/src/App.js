@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 // import react admin
 import { Admin, Resource } from 'react-admin';
 // import rest provider
@@ -28,3 +30,4 @@ function App() {
 }
 
 export default App;
+>>>>>>> 41b133c875ad5de6f216a89e335421ca907ab7e2
