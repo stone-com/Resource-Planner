@@ -1,5 +1,4 @@
 import React from 'react';
-import { useGetList } from 'react-admin';
 import {
   List,
   Datagrid,
@@ -8,6 +7,10 @@ import {
   DeleteButton,
   BooleanField,
   NumberField,
+  ChipField,
+  ReferenceArrayField,
+  SingleFieldList,
+
 } from 'react-admin';
 
 const ProjectList = (props) => {
@@ -17,8 +20,17 @@ const ProjectList = (props) => {
         <TextField source='title' />
         <NumberField source='allocation' />
         <BooleanField source='completed' />
-        <EditButton basePath='/resources' />
-        <DeleteButton basePath='/resources' />
+        <ReferenceArrayField
+          label='Assigned Resources'
+          reference='resources'
+          source='assignedResources'
+        >
+          <SingleFieldList>
+            <ChipField source='personName' />
+          </SingleFieldList>
+        </ReferenceArrayField>
+        <EditButton basePath='/projects' label=''/>
+        <DeleteButton basePath='/projects' label=''/>
       </Datagrid>
     </List>
   );

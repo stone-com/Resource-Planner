@@ -1,10 +1,12 @@
 import DashboardHeader from './DashboardHeader';
 import { Container, Grid } from '@mui/material';
 import ProjectList from './ProjectList';
+import ResourceList from './ResourceList';
 import { Resource } from 'react-admin';
 import SummaryCard from './SummaryCard';
 import ProgressRing from './ProgressRing';
 import ProjectCreate from './ProjectCreate';
+import ResourceCreate from './ResourceCreate';
 import SummaryNumber from './SummaryNumber';
 import { useGetList } from 'react-admin';
 
@@ -27,33 +29,36 @@ const Dashboard = () => {
         <Grid item xs={12}>
           <DashboardHeader title={'Summary'} />
         </Grid>
-        <Grid item xs={3}>
+        <Grid item xs={6} md={3}>
           <SummaryCard icon={<ProgressRing />} title={'Total Capacity'} />
         </Grid>
-        <Grid item xs={3}>
+        <Grid item xs={6} md={3}>
           <SummaryCard
             icon={<SummaryNumber number={data.length} />}
             title={'Total Resources'}
           />
         </Grid>
-        <Grid item xs={3}>
+        <Grid item xs={6} md={3}>
           <SummaryCard
             icon={<SummaryNumber number={12} />}
             title={'Hours Available'}
           />
         </Grid>
-        <Grid item xs={3}>
+        <Grid item xs={6} md={3}>
           <SummaryCard
             icon={<SummaryNumber number={3} />}
             title={'Resources needed'}
           />
         </Grid>
         <Grid item xs={12}>
-        <DashboardHeader title={'Projects'}/>
+          <DashboardHeader title={'Projects'} />
+          <Resource name='projects' list={ProjectList} create={ProjectCreate} />
+        </Grid>
+        <Grid item xs={12}>
+          <DashboardHeader title={'Resources'} />
+          <Resource name='resources' list={ResourceList} create={ResourceCreate} />
+        </Grid>
       </Grid>
-      </Grid>
-      
-      <Resource name='projects' list={ProjectList} create={ProjectCreate} />
     </Container>
   );
 };

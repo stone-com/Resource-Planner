@@ -32,7 +32,7 @@ const ProjectCreate = (props) => {
         <SimpleForm>
           <TextInput source='title' />
           <TextInput source='description' />
-          <NumberInput source='allocation' />
+          <NumberInput source='allocation' step={25}/>
           <NumberInput source='requiredResources' />
           <DateInput label='Start Date' source='createdAt' />
           <SelectArrayInput
