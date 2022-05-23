@@ -6,6 +6,7 @@ import { Resource } from 'react-admin';
 import SummaryCard from './SummaryCard';
 import ProgressRing from './ProgressRing';
 import ProjectCreate from './ProjectCreate';
+import ResourceCreate from './ResourceCreate';
 import SummaryNumber from './SummaryNumber';
 import { useGetList } from 'react-admin';
 
@@ -55,7 +56,7 @@ const Dashboard = () => {
         </Grid>
         <Grid item xs={12}>
           <DashboardHeader title={'Resources'} />
-          <Resource name='resources' list={ResourceList} create={ProjectCreate} />
+          <Resource name='resources' list={ResourceList} create={ResourceCreate} />
         </Grid>
       </Grid>
     </Container>

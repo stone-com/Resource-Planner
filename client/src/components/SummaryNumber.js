@@ -5,12 +5,10 @@ const SummaryNumber = ({ number }) => {
   const style = {
     fontSize: '7.8em',
     lineHeight: '0',
-    textAlign: 'center'
+    textAlign: 'center',
   };
 
-  return (
-      <p  style={style}>{number}</p>
-  );
+  return <p style={style}>{number}</p>;
 };
 
 export default SummaryNumber;

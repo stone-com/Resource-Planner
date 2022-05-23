@@ -29,6 +29,26 @@
       "photo": "",
       "personName": "Brian",
       "availability": "50"
+    },
+    {
+      "personName": "Test USer",
+      "id": "efc0SBB"
+    },
+    {
+      "personName": "Another Sample User",
+      "id": "qgW33AW"
+    },
+    {
+      "personName": "Steven",
+      "id": "6vz84WD"
+    },
+    {
+      "personName": "Natalie",
+      "id": "D9oqMgn"
+    },
+    {
+      "personName": "Nolan",
+      "id": "k2yVBHU"
     }
   ],
   "projects": [
@@ -42,7 +62,9 @@
       "createdAt": "  2022-05-20",
       "assignedResources": [
         "2",
-        "6"
+        "6",
+        "3",
+        "4"
       ]
     },
     {

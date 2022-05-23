@@ -6,7 +6,7 @@ export default () => {
     width: 250,
     height: 250,
     percent: 0.7,
-    color: ['#5B8FF9', '#E8EDF3'],
+    color: ['#70cc45', '#b9eda1'],
     appendPadding: 2,
   };
   return <RingProgress {...config} />;

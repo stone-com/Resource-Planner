@@ -28,18 +28,28 @@ const ProjectEdit = (props) => {
   console.log(props);
   return (
     <Container>
-      <Edit title='Edit project' {...props}>
+      <Edit
+        title='Edit project'
+        {...props}
+        
+      >
         <SimpleForm>
-          <TextInput disabled source='title' />
-          <TextInput source='description' />
-          <NumberInput source='allocation' />
-          <NumberInput source='requiredResources' />
-          <DateInput disabled label='Start Date' source='createdAt' />
+          <TextInput disabled source='title'  />
+          <TextInput source='description'  />
+          <NumberInput source='allocation'  />
+          <NumberInput source='requiredResources'  />
+          <DateInput
+            disabled
+            label='Start Date'
+            source='createdAt'
+            
+          />
           <SelectArrayInput
             label='Resources'
             source='assignedResources'
             // pass in choices array to choices for select
             choices={resources}
+            
           />
         </SimpleForm>
       </Edit>

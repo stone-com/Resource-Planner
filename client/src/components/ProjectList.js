@@ -29,8 +29,8 @@ const ProjectList = (props) => {
             <ChipField source='personName' />
           </SingleFieldList>
         </ReferenceArrayField>
-        <EditButton basePath='/projects' />
-        <DeleteButton basePath='/projects' />
+        <EditButton basePath='/projects' label=''/>
+        <DeleteButton basePath='/projects' label=''/>
       </Datagrid>
     </List>
   );
