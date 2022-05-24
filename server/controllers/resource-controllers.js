@@ -67,7 +67,7 @@ module.exports = {
 
     },
     async removeResource(req,res){
-      const resource=await Resource.deleteOne({_id:req.body.id})
+      const resource=await Resource.deleteOne({_id:req.params.id})
   if(!resource){
     res.send('Error through deleting resource')
   }

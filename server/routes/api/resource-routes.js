@@ -6,7 +6,7 @@ const {
   router.route('/').get(getResources);
   router.route('/').post(createResource);
   router.route('/:id').put(editResource)
-  router.route('/').delete(removeResource)
+  router.route('/:id').delete(removeResource)
   // router.route('/resource').post(createResource);
   router.route('/:id').get(getSingleResource);
   
