@@ -1,16 +1,4 @@
 {
-<<<<<<< HEAD
-  "name": "tech-friends",
-  "version": "1.0.0",
-  "description": "",
-  "main": "server/server.js",
-  "scripts": {
-    "start": "node server/server.js",
-    "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
-    "install": "cd server && npm i && cd ../client && npm i",
-    "seed": "cd server && npm run seed",
-    "build": "cd client && npm run build"
-=======
   "name": "resource-planner",
   "version": "1.0.0",
   "description": "test",
@@ -23,12 +11,10 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/stone-com/Resource-Planner.git"
->>>>>>> 41b133c875ad5de6f216a89e335421ca907ab7e2
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-<<<<<<< HEAD
   "devDependencies": {
     "concurrently": "^5.1.0"
   },
@@ -37,14 +23,12 @@
     "react-bootstrap": "^2.4.0",
     "react-dom": "^18.1.0",
     "react-router-dom": "^6.3.0",
-    "styled-component": "^2.8.0"
-=======
+    "styled-component": "^2.8.0",
   "bugs": {
     "url": "https://github.com/stone-com/Resource-Planner/issues"
   },
   "homepage": "https://github.com/stone-com/Resource-Planner#readme",
   "dependencies": {
     "concurrently": "^7.2.0"
->>>>>>> 41b133c875ad5de6f216a89e335421ca907ab7e2
   }
-}
+  }}
