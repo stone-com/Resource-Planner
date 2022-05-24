@@ -1,34 +1,34 @@
 {
   "resources": [
     {
-      "id": "1",
-      "photo": "",
+
+      "personPhoto": "",
       "personName": "Stone",
-      "availability": "50"
+      "availability": 50
     },
     {
-      "id": "2",
-      "photo": "",
+      
+      "personPhoto": "",
       "personName": "Mike",
-      "availability": "25"
+      "availability": 25
     },
     {
-      "id": "3",
-      "photo": "",
+      
+      "personPhoto": "",
       "personName": "Cheng",
-      "availability": "0"
+      "availability": 0
     },
     {
-      "id": "4",
-      "photo": "",
+      
+      "personPhoto": "",
       "personName": "Namees",
-      "availability": "100"
+      "availability": 100
     },
     {
-      "id": "5",
-      "photo": "",
+      
+      "personPhoto": "",
       "personName": "Brian",
-      "availability": "50"
+      "availability": 50
     },
     {
       "personName": "Test USer",
