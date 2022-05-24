@@ -50,6 +50,7 @@ type Query{
     getSingleProject(projectId:ID!): Project
     
     getUser(username: String!): User
+    me: User
 
 }
 type Mutation{
