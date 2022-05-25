@@ -11,6 +11,9 @@ import ResourceList from './components/ResourceList.js';
 import ResourceCreate from './components/ResourceCreate.js';
 import theme from './theme';
 
+//pages
+import loginPage from "./pages/login";
+
 //httpClient to pass through the auth token via the header
 const httpClient = (url, options = {}) => {
   if (!options.headers) {
@@ -29,10 +32,11 @@ function App() {
   return (
     // React admin provider, using restprovider and passing in API url.
     <Admin
+      authProvider={authProvider}
       dashboard={Dashboard}
       dataProvider={dataProvider}
+      loginPage = {loginPage}
       title='Resource Planner'
-      authProvider={authProvider}
     >
       <Resource name='projects' create={ProjectCreate} edit={ProjectEdit} />
       <Resource name='resources' list={ResourceList} create={ResourceCreate} />
