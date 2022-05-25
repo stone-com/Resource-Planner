@@ -7,6 +7,9 @@ import ProjectList from './components/ProjectList.js';
 import Dashboard from './components/Dashboard.js';
 import ProjectCreate from './components/ProjectCreate.js';
 import ProjectEdit from './components/ProjectEdit.js';
+import ResourceList from './components/ResourceList.js';
+import ResourceCreate from './components/ResourceCreate.js';
+import theme from './theme';
 
 //httpClient to pass through the auth token via the header
 const httpClient = (url, options = {}) => {
@@ -31,7 +34,8 @@ function App() {
       title='Resource Planner'
       authProvider={authProvider}
     >
-      <Resource name='projects' list={ProjectList} create={ProjectCreate} edit={ProjectEdit}/>
+      <Resource name='projects' create={ProjectCreate} edit={ProjectEdit} />
+      <Resource name='resources' list={ResourceList} create={ResourceCreate} />
     </Admin>
   );
 }

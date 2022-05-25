@@ -4,7 +4,7 @@ import {AuthProvider} from 'react-admin';
 const authProvider = {
     //Authentication
     login: ({ username, password }) =>  {
-        const request = new Request('https://mydomain.com/authenticate', {
+        const request = new Request('http://localhost:3000/login', {
             method: 'POST',
             body: JSON.stringify({ username, password }),
             headers: new Headers({ 'Content-Type': 'application/json' }),
@@ -25,4 +25,4 @@ const authProvider = {
         }
 }
 
-export default authProvider
+export default authProvider;
