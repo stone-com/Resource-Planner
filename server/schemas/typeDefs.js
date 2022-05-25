@@ -4,15 +4,15 @@ const { GraphQLScalarType, Kind } = require('graphql');
 const typeDefs = gql`
 scalar Date
 
- type Project{
-     title:String
-     description:String
-     requiredSkills:String
-     allocation:Int
-     requiredResNumber:Int
-     createdAt: Date
-     completed:Boolean
-     assignedResources:[Resource]
+type Project{
+    title:String
+    description:String
+    requiredSkills:String
+    allocation:Int
+    requiredResNumber:Int
+    createdAt: Date
+    completed:Boolean
+    assignedResources:[Resource]
 
 }
 type Resource{
