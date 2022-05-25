@@ -8,7 +8,7 @@ const ResourceCreate = (props) => {
       <Create {...props}>
         <SimpleForm>
           <TextInput source='personName' />
-          {/* <FileInput /> */}
+          {/* <FileInput />  CANT GET THSI TO WORK YET*/}
         </SimpleForm>
       </Create>
     </Container>
