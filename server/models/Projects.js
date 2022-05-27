@@ -8,9 +8,7 @@ const projectSchema = new Schema({
   description: {
     type: String,
   },
-  requiredSkills: {
-    type: String,
-  },
+  
   allocation: {
     type: Number,
     default:0

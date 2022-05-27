@@ -2,7 +2,16 @@ const {Project, Resource} = require('../models');
 
 module.exports = {
     async createProject(req, res) {
-        const project = await Project.create(req.body);
+        const project = await Project.create({
+            title:req.body[1].title,
+            description:req.body[1].description,
+            requiredResNumber:req.body[1].requiredResNumber,
+            completed:req.body[1].completed,
+
+createdAt:req.body[1].createdAt,
+assignedResources:req.body[0]
+        });
+        // console.log('after create',project)
 
         if (! project) {
             return res.status(400).json({message: "cannot create project please try again"});

@@ -20,15 +20,13 @@ module.exports = {
     //   res.status(200).json(resource);
     },
     async getResources(req,res){
-        try {
+
             const resources= await Resource.find({})
             if(!resources){ //400 can't find it
                 return res.status(400).json({message:"can't find the resource you're required to look for"})
                 } 
             return res.status(200).json(resources);
-          } catch (error) {
-            console.log(error);
-            return res.status(500).json(error);
+        
           }
 //       const resources= await Resource.find({})
 //   if(!resources){ //400 can't find it
@@ -36,7 +34,7 @@ module.exports = {
 //   } 
 //   res.json(resources)
   
-  },
+  ,
 //   async createResource(req,res){
 //   const resource=await Resource.create(req.body);
 //   if(!resource){
