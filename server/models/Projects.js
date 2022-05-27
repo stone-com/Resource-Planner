@@ -13,6 +13,7 @@ const projectSchema = new Schema({
   },
   allocation: {
     type: Number,
+    default:0
   },
 
   requiredResNumber: {
@@ -20,6 +21,7 @@ const projectSchema = new Schema({
   },
   completed: {
     type: Boolean,
+    default:false
   },
   createdAt: {
     type: Date,
