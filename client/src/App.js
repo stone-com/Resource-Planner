@@ -1,11 +1,8 @@
-import React, { useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-  createHttpLink,
-} from '@apollo/client';
+import React, { createContext } from 'react';
+import Dashboard from './components/Dashboard';
+import Navbar from './components/Navbar';
+import { useQuery, gql } from '@apollo/client';
+import { GETALL_PROJECTS, GETALL_RESOURCES } from './utils/queries';
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
@@ -33,37 +30,45 @@ const authLink = setContext((_, { headers }) => {
   };
 });
 
-const client = new ApolloClient({
-  // Set up our client to execute the `authLink` middleware prior to making the request to our GraphQL API
-  link: authLink.concat(httpLink),
-  cache: new InMemoryCache(),
-});
+const App = () => {
+  // query the projects and resources
+  const { data: resourcesData } = useQuery(GETALL_RESOURCES);
+  const { data: projectsData } = useQuery(GETALL_PROJECTS);
+  let resources = [];
+  let projects = [];
+  if (resourcesData && projectsData) {
+    // save the gql query (data.query return) to variable
+    resources = resourcesData.getAllResources;
+    projects = projectsData.getAllProjects;
+    console.log('resources:', resources);
+    console.log('projects:', projects);
+  }
 
-function App() {
   return (
-  <ApolloProvider client={client}>
-      <Router>
+    <>
+    <Router>
         <div >
-        <Routes>
-          
-          <Route 
-                path="/login" 
-                element={<Login />}
-              />
-          <Route 
-                path="/signup" 
-                element={<Signup />}
-              />
-          
-          </Routes>
-      
+          <Navbar />
+          <Dashboard resources={resources} projects={projects} />
+          <Routes>
+            
+            <Route 
+                  path="/login" 
+                  element={<Login />}
+                />
+            <Route 
+                  path="/signup" 
+                  element={<Signup />}
+                />
+            
+            </Routes>
+        
 
-      
-        </div>
+        
+          </div>
       </Router>
-
-  </ApolloProvider>
-  )
-}
+    </>
+  );
+};
 
 export default App;

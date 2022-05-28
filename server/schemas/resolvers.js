@@ -1,23 +1,30 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { Project,Resource, User, Customer} = require('../models');
+const { Project, Resource, User, Customer } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
-  Query:{
+  Query: {
     //project queries
-    getAllprojects:async()=>{
-      return Project.find({})
+    getAllProjects: async () => {
+      return Project.find({});
     },
-    getSingleProject:async(parent,{projectId})=>{
-return Project.findById(projectId)
+    getSingleProject: async (parent, { projectId }) => {
+      return Project.findById(projectId);
+    },
+    // resource queries
+    getAllResources: async () => {
+      return Resource.find({});
+    },
+    getSingleResource: async (parent, { projectId }) => {
+      return Resource.findById(projectId);
     },
     getAllResources:async()=>{
 return await Resource.find({}).populate('assignedProjects')
     },
 
     //User queries
-    getUser: async() =>{
-      return User.findOne({username})
+    getUser: async () => {
+      return User.findOne({ username });
     },
     me: async (parent, args, context) => {
       if (context.user) {
@@ -25,8 +32,45 @@ return await Resource.find({}).populate('assignedProjects')
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-
   },
+<<<<<<< HEAD
+  Mutation: {
+    addProject: async (
+      parent,
+      { requiredSkillsdescription, title, allocation, requiredResNumber }
+    ) => {
+      return await Project.create({
+        requiredSkillsdescription,
+        title,
+        allocation,
+        requiredResNumber,
+      });
+    },
+    updateProject: async (
+      parent,
+      { projectId, completed, requiredResNumber }
+    ) => {
+      return await Project.findOneAndUpdate(
+        { _id: projectId },
+        { completed: completed, requiredResNumber: requiredResNumber }
+      );
+    },
+    // Resource Mutations
+    addResource: async (parent, { personName }) => {
+      return await Resource.create({ personName });
+    },
+    //User Mutations - login and signup
+    addUser: async (parent, { username, email, password }, context) => {
+      const user = await User.create({
+        username,
+        email,
+        password,
+        customerId: context.customer.customerId,
+      });
+      const token = signToken(user);
+      return { token, user };
+    },
+=======
   Mutation:{
     addProject:async(parent,{description,title,requiredResNumber})=>{
 return await Project.create({description,title,requiredResNumber})
@@ -51,23 +95,26 @@ addUser: async (parent, { username, email, password }, context) => {
 
 login: async (parent, { email, password }) => {
   const user = await User.findOne({ email });
+>>>>>>> 0f0c9c0ceb927aff941452fe694733d6bd5baa2b
 
-  if (!user) {
-    throw new AuthenticationError('No user found with this email address');
-  }
+    login: async (parent, { email, password }) => {
+      const user = await User.findOne({ email });
 
-  const correctPw = await user.isCorrectPassword(password);
+      if (!user) {
+        throw new AuthenticationError('No user found with this email address');
+      }
 
-  if (!correctPw) {
-    throw new AuthenticationError('Incorrect credentials');
-  }
+      const correctPw = await user.isCorrectPassword(password);
 
-  const token = signToken(user);
+      if (!correctPw) {
+        throw new AuthenticationError('Incorrect credentials');
+      }
 
-  return { token, user };
-},
+      const token = signToken(user);
 
-  }
+      return { token, user };
+    },
+  },
 };
 
 module.exports = resolvers;
