@@ -18,18 +18,15 @@
   "devDependencies": {
     "concurrently": "^5.1.0"
   },
-  "dependencies": {
-    "@apollo/client": "^3.6.4",
-    "react-bootstrap": "^2.4.0",
-    "react-dom": "^18.1.0",
-    "react-router-dom": "^6.3.0",
-    "styled-component": "^2.8.0"
-  ,"bugs": {
+
+   
+  
+  "bugs": {
    "url": "https://github.com/stone-com/Resource-Planner/issues"
   },
   "homepage": "https://github.com/stone-com/Resource-Planner#readme",
   "dependencies": {
     "concurrently": "^7.2.0"
   }
-  }}
+  }
 

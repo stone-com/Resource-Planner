@@ -54,9 +54,9 @@ type Query{
 
 }
 type Mutation{
-    addProject(requiredSkills:String!,description:String!,title:String!,allocation:Int!,requiredResNumber:Int!):Project
+    addProject(description:String!,title:String!,requiredResNumber:Int!):Project
     updateProject(projectId:ID!,completed:Boolean!,requiredResNumber:Int!):Project
-    
+    addResource(personName:String!,):Resource
     addUser(username: String!, email: String!, password: String!, customerId: ID!): Auth
     login(email: String!, password: String!): Auth
 

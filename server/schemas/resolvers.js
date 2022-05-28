@@ -11,6 +11,9 @@ const resolvers = {
     getSingleProject:async(parent,{projectId})=>{
 return Project.findById(projectId)
     },
+    getAllResources:async()=>{
+return await Resource.find({}).populate('assignedProjects')
+    },
 
     //User queries
     getUser: async() =>{
@@ -25,14 +28,18 @@ return Project.findById(projectId)
 
   },
   Mutation:{
-    addProject:async(parent,{requiredSkillsdescription,title,allocation,requiredResNumber})=>{
-return await Project.create({requiredSkillsdescription,title,allocation,requiredResNumber})
+    addProject:async(parent,{description,title,requiredResNumber})=>{
+return await Project.create({description,title,requiredResNumber})
 },
 updateProject:async(parent,{projectId,completed,requiredResNumber})=>{
  return await Project.findOneAndUpdate(
     {_id:projectId},
     {completed:completed,requiredResNumber:requiredResNumber}
   )
+
+},
+addResource:async(parent,{personName})=>{
+  return await Resource.create({personName})
 
 },
 //User Mutations - login and signup
