@@ -5,12 +5,16 @@ import { useQuery, gql } from '@apollo/client';
 import { GETALL_PROJECTS, GETALL_RESOURCES } from './utils/queries';
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import {
+
+  createHttpLink,
+} from '@apollo/client';
 
 //Pages from pages folder - login and signup
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 
-import ProjectButton from './component/ProjectButton';
+import ProjectButton from './components/ProjectButton';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
