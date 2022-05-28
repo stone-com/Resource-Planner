@@ -6,16 +6,16 @@ import { GETALL_PROJECTS, GETALL_RESOURCES } from './utils/queries';
 
 const App = () => {
   // query the projects and resources
-  const {
-    data: resourcesData,
-  } = useQuery(GETALL_RESOURCES);
-  const {
-    data: projectsData,
-  } = useQuery(GETALL_PROJECTS);
-  const resources = resourcesData.getAllResources;
-  const projects = projectsData.getAllProjects;
-  console.log('resources:', resources);
-  console.log('projects:', projects);
+  const { data: resourcesData } = useQuery(GETALL_RESOURCES);
+  const { data: projectsData } = useQuery(GETALL_PROJECTS);
+  if (resourcesData && projectsData) {
+    // save the gql query (data.query return) to variable
+    const resources = resourcesData.getAllResources;
+    const projects = projectsData.getAllProjects;
+    console.log('resources:', resources);
+    console.log('projects:', projects);
+  }
+
   return (
     <>
       <Navbar />
