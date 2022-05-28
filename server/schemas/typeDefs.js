@@ -45,10 +45,10 @@ type Auth{
 }
 
 type Query{
-    getAllprojects:[Project]!  
+    getAllProjects:[Project]!  
     getAllResources:[Resource]! 
     getSingleProject(projectId:ID!): Project
-    
+    getSingleResource(_id:ID!): Resource
     getUser(username: String!): User
     me: User
 

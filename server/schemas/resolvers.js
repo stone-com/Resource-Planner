@@ -5,11 +5,18 @@ const { signToken } = require('../utils/auth');
 const resolvers = {
   Query:{
     //project queries
-    getAllprojects:async()=>{
+    getAllProjects:async()=>{
       return Project.find({})
     },
     getSingleProject:async(parent,{projectId})=>{
 return Project.findById(projectId)
+    },
+    // resource queries
+    getAllResources:async()=>{
+      return Resource.find({})
+    },
+    getSingleResource:async(parent,{projectId})=>{
+return Resource.findById(projectId)
     },
 
     //User queries
