@@ -1,12 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+
+
 import App from './App';
-import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-  createHttpLink,
-} from '@apollo/client';
+
 
 // apollo client setup
 const client = new ApolloClient({
