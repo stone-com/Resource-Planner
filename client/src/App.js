@@ -11,13 +11,15 @@ const App = () => {
     error: resourceError,
     loading: resourceLoading,
   } = useQuery(GETALL_RESOURCES);
-  console.log(resourcesData);
   const {
     data: projectsData,
     error: projectError,
     loading: projectLoading,
   } = useQuery(GETALL_PROJECTS);
-  console.log(projectsData);
+  const resources = resourcesData.getAllResources;
+  const projects = projectsData.getAllProjects;
+  console.log('resources:', resources);
+  console.log('projects:', projects);
   return (
     <>
       <Navbar />
