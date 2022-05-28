@@ -23,14 +23,14 @@ const Dashboard = () => {
     error: projectError,
     loading: projectLoading,
   } = useQuery(GETALL_PROJECTS);
-  if (resourceLoading || projectLoading) return "Loading...";
-  if (resourceError || projectError) return projectError.message || resourceError.message 
+  if (resourceLoading || projectLoading) return 'Loading...';
+  if (resourceError || projectError)
+    return projectError.message || resourceError.message;
   // set state to the results returned from query
   setResources(resourcesData);
   setProjects(projectsData);
 
   console.log(resources);
-
   console.log(projects);
   return (
     <Container>
