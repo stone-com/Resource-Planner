@@ -5,10 +5,7 @@ import { useQuery } from '@apollo/client';
 import { GETALL_PROJECTS, GETALL_RESOURCES } from './utils/queries';
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import {
 
-  createHttpLink,
-} from '@apollo/client';
 
 //Pages from pages folder - login and signup
 import Login from './pages/Login';
@@ -16,23 +13,7 @@ import Signup from './pages/Signup';
 
 import ProjectButton from './components/ProjectButton';
 
-// Construct our main GraphQL API endpoint
-const httpLink = createHttpLink({
-  uri: '/graphql',
-});
 
-
-const authLink = setContext((_, { headers }) => {
-  // get the authentication token from local storage if it exists
-  const token = localStorage.getItem('id_token');
-  // return the headers to the context so httpLink can read them
-  return {
-    headers: {
-      ...headers,
-      authorization: token ? `Bearer ${token}` : '',
-    },
-  };
-});
 
 const App = () => {
   // query the projects and resources
