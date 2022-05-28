@@ -1,8 +1,7 @@
-<<<<<<< HEAD
-import React, { createContext } from 'react';
+import React from 'react';
 import Dashboard from './components/Dashboard';
 import Navbar from './components/Navbar';
-import { useQuery, gql } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import { GETALL_PROJECTS, GETALL_RESOURCES } from './utils/queries';
 
 const App = () => {
@@ -26,31 +25,5 @@ const App = () => {
     </>
   );
 };
-=======
-import React, { useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import ProjectButton from './component/ProjectButton';
-function App() {
-  return (
-    <Router>
-      <div >
-      <Routes>
-        
-          <Route 
-            path="/addproject" 
-            element={<ProjectButton />} 
-          />
-        
-        </Routes>
-     
-
-    
-      </div>
-    </Router>
-  )
-}
->>>>>>> 0f0c9c0ceb927aff941452fe694733d6bd5baa2b
 
 export default App;

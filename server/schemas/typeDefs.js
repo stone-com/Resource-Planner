@@ -46,7 +46,6 @@ const typeDefs = gql`
     getSingleResource(_id: ID!): Resource
     getUser(username: String!): User
     me: User
-<<<<<<< HEAD
   }
   type Mutation {
     addProject(
@@ -67,15 +66,6 @@ const typeDefs = gql`
       password: String!
       customerId: ID!
     ): Auth
-=======
-
-}
-type Mutation{
-    addProject(description:String!,title:String!,requiredResNumber:Int!):Project
-    updateProject(projectId:ID!,completed:Boolean!,requiredResNumber:Int!):Project
-    addResource(personName:String!,):Resource
-    addUser(username: String!, email: String!, password: String!, customerId: ID!): Auth
->>>>>>> 0f0c9c0ceb927aff941452fe694733d6bd5baa2b
     login(email: String!, password: String!): Auth
   }
 `;
