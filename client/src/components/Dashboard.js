@@ -7,7 +7,7 @@ import SummaryNumber from './SummaryNumber';
 import ResourceList from './ResourceList';
 import ProjectList from './ProjectList';
 
-const Dashboard = () => {
+const Dashboard = ({}) => {
   // declare state for projects and resources.
   const [resources, setResources] = useState([]);
   const [projects, setProjects] = useState([]);

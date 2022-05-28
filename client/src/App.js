@@ -8,10 +8,12 @@ const App = () => {
   // query the projects and resources
   const { data: resourcesData } = useQuery(GETALL_RESOURCES);
   const { data: projectsData } = useQuery(GETALL_PROJECTS);
+  let resources = [];
+  let projects = [];
   if (resourcesData && projectsData) {
     // save the gql query (data.query return) to variable
-    const resources = resourcesData.getAllResources;
-    const projects = projectsData.getAllProjects;
+    resources = resourcesData.getAllResources;
+    projects = projectsData.getAllProjects;
     console.log('resources:', resources);
     console.log('projects:', projects);
   }
@@ -19,7 +21,7 @@ const App = () => {
   return (
     <>
       <Navbar />
-      <Dashboard />
+      <Dashboard resources={resources} projects={projects} />
     </>
   );
 };
