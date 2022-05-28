@@ -5,47 +5,24 @@ import { DataGrid } from '@mui/x-data-grid';
 const columns = [
   { field: 'id', headerName: 'ID', width: 80 },
   {
-    field: 'projectName',
-    headerName: 'Project Name',
+    field: 'name',
+    headerName: 'Name',
     width: 150,
   },
   {
-    field: 'description',
-    headerName: 'Description',
+    field: 'availability',
+    headerName: 'Availability',
     width: 150,
   },
   {
-    field: 'allocation',
-    headerName: 'Allocation',
-    type: 'number',
-    width: 80,
-  },
-  {
-    field: 'requiredResources',
-    headerName: 'Resources Needed',
-    type: 'number',
-    width: 80,
-  },
-  {
-    field: 'createdAt',
-    headerName: 'Created At',
-    width: 100,
-  },
-  {
-    field: 'completed',
-    headerName: 'Completed',
-    width: 80,
-    type: 'boolean',
-  },
-  {
-    field: 'assignedResources',
-    headerName: 'Assigned Resources',
-    width: 200,
+    field: 'assignedProjects',
+    headerName: 'Assigned Projects',
+    width: 150,
   },
 ];
 
 const rows = [
-  { id: 1, projectName: 'Project 1', description: 'First Project', allocation:20, requiredResources:4, completed: false, assignedResources: 'Stone'  },
+  { id: 1, name: 'Stone', availability: '100%' },
   { id: 2, name: 'Namees', availability: '100%' },
   { id: 3, name: 'Mike', availability: '100%' },
   { id: 4, name: 'Cheng', availability: '100%' },

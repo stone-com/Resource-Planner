@@ -2,66 +2,72 @@ const { gql } = require('apollo-server-express');
 const { GraphQLScalarType, Kind } = require('graphql');
 
 const typeDefs = gql`
-scalar Date
+  scalar Date
 
-type Project{
-    title:String
-    description:String
-    requiredSkills:String
-    allocation:Int
-    requiredResNumber:Int
+  type Project {
+    title: String
+    description: String
+    requiredSkills: String
+    allocation: Int
+    requiredResNumber: Int
     createdAt: Date
-    completed:Boolean
-    assignedResources:[Resource]
+    completed: Boolean
+    assignedResources: [Resource]
+  }
+  type Resource {
+    personName: String
+    availability: Int
+    assignedProjects: [Project]
+  }
 
-}
-type Resource{
-    personName:String
-    personPhoto:String
-    availability:Int
-    assignedProjects:[Project]
-
-
-
-}
-
-type User{
+  type User {
     _id: ID
     username: String
     email: String
     password: String
     customerId: Customer!
-}
+  }
 
-type Customer{
+  type Customer {
     customerId: ID
     customerName: String
     users: [User]!
-}
+  }
 
-type Auth{
+  type Auth {
     token: ID!
     user: User
-}
+  }
 
-type Query{
-    getAllProjects:[Project]!  
-    getAllResources:[Resource]! 
-    getSingleProject(projectId:ID!): Project
-    getSingleResource(_id:ID!): Resource
+  type Query {
+    getAllProjects: [Project]!
+    getAllResources: [Resource]!
+    getSingleProject(projectId: ID!): Project
+    getSingleResource(_id: ID!): Resource
     getUser(username: String!): User
     me: User
-
-}
-type Mutation{
-    addProject(requiredSkills:String!,description:String!,title:String!,allocation:Int!,requiredResNumber:Int!):Project
-    updateProject(projectId:ID!,completed:Boolean!,requiredResNumber:Int!):Project
-    
-    addUser(username: String!, email: String!, password: String!, customerId: ID!): Auth
+  }
+  type Mutation {
+    addProject(
+      description: String!
+      title: String!
+      allocation: Int!
+      requiredResNumber: Int!
+    ): Project
+    updateProject(
+      projectId: ID!
+      completed: Boolean!
+      requiredResNumber: Int!
+    ): Project
+    addResource(personName: String!): Resource
+    addUser(
+      username: String!
+      email: String!
+      password: String!
+      customerId: ID!
+    ): Auth
     login(email: String!, password: String!): Auth
-
-}
-
+  }
 `;
 
 module.exports = typeDefs;

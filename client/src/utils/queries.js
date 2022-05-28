@@ -1,5 +1,5 @@
-import gql from 'gql';
-import { useQuery } from '@apollo/client';
+import { gql } from "@apollo/client";
+
 export const GETALL_PROJECTS = gql`
   query GetAllProjects {
     getAllProjects {

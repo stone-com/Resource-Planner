@@ -8,9 +8,6 @@ const projectSchema = new Schema({
   description: {
     type: String,
   },
-  requiredSkills: {
-    type: String,
-  },
   allocation: {
     type: Number,
   },
@@ -20,6 +17,7 @@ const projectSchema = new Schema({
   },
   completed: {
     type: Boolean,
+    default: false,
   },
   createdAt: {
     type: Date,
