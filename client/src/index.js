@@ -1,8 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+<<<<<<< HEAD
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 
 
+=======
+>>>>>>> 0f0c9c0ceb927aff941452fe694733d6bd5baa2b
 import App from './App';
 
 // apollo client setup
@@ -17,3 +20,7 @@ root.render(
     <App />
   </ApolloProvider>
 );
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals

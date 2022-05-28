@@ -1,4 +1,5 @@
 node_modules
+<<<<<<< HEAD
 node_modules
 server/node_modules/.bin/apollo-pbjs
 server/node_modules/.bin/apollo-pbts
@@ -17,3 +18,5 @@ server/node_modules/package-json/node_modules/.bin/semver
 server/node_modules/semver-diff/node_modules/.bin/semver
 server/node_modules/update-notifier/node_modules/.bin/semver
 .bin
+=======
+>>>>>>> 0f0c9c0ceb927aff941452fe694733d6bd5baa2b
