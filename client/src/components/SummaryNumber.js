@@ -1,5 +1,5 @@
 import React from 'react';
-import { useGetList } from 'react-admin';
+
 
 const SummaryNumber = ({ number }) => {
   const style = {

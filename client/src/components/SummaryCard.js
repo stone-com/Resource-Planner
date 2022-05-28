@@ -12,7 +12,7 @@ export default ({ icon, title, number }) => {
       <CardContent>
         <Typography gutterBottom variant='h5' component='div' textAlign='center'>
           {title}
-        </Typography> 
+        </Typography>
       </CardContent>
     </Card>
   );
