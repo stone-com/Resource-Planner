@@ -8,13 +8,9 @@ const App = () => {
   // query the projects and resources
   const {
     data: resourcesData,
-    error: resourceError,
-    loading: resourceLoading,
   } = useQuery(GETALL_RESOURCES);
   const {
     data: projectsData,
-    error: projectError,
-    loading: projectLoading,
   } = useQuery(GETALL_PROJECTS);
   const resources = resourcesData.getAllResources;
   const projects = projectsData.getAllProjects;
