@@ -18,15 +18,13 @@
   "devDependencies": {
     "concurrently": "^5.1.0"
   },
-
-   
-  
   "bugs": {
-   "url": "https://github.com/stone-com/Resource-Planner/issues"
+    "url": "https://github.com/stone-com/Resource-Planner/issues"
   },
   "homepage": "https://github.com/stone-com/Resource-Planner#readme",
   "dependencies": {
-    "concurrently": "^7.2.0"
+    "@apollo/client": "^3.6.5",
+    "concurrently": "^7.2.0",
+    "graphql": "^16.5.0"
   }
-  }
-
+}
