@@ -18,8 +18,8 @@ const resolvers = {
     getSingleResource: async (parent, { projectId }) => {
       return Resource.findById(projectId);
     },
-    getAllResources:async()=>{
-return await Resource.find({}).populate('assignedProjects')
+    getAllResources: async () => {
+      return await Resource.find({}).populate('assignedProjects');
     },
 
     //User queries
