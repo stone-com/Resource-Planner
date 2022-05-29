@@ -75,32 +75,25 @@ const rows = [
 
 export default function ProjectList() {
   const [projects, setProjects] = useState([]);
-  // let columns = [];
+
   let rows = [];
 
   const { loading, error, data } = useQuery(GETALL_PROJECTS);
-  // useEffect(() => {
-  //   let queryResults = data;
 
-  // //  console.log('QGA',queryReults.getAllProjects)
-  //   console.log('QUERY', queryReults);
-
-  // });
   if (loading) return 'Loading...';
   if (error) return `Error! ${error.message}`;
   let projectArray = data.getAllProjects;
-  console.log('project rray 0', projectArray[0]);
   for (let i = 0; i < projectArray.length; i++) {
     let project = projectArray[i];
     console.log('project rray 1', project);
     rows.push({
       id: 1,
-      projectName: 'Project 1',
-      description: 'First Project',
-      allocation: 20,
-      requiredResources: 4,
+      projectName: project.title,
+      description: project.description,
+      allocation: project.allocation,
+      requiredResources: project.requiredResNumber,
       completed: false,
-      assignedResources: 'Stone',
+      assignedResources: project.assignedResources,
     });
   }
 
