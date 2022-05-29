@@ -6,14 +6,11 @@ import { GETALL_PROJECTS, GETALL_RESOURCES } from './utils/queries';
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-
 //Pages from pages folder - login and signup
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 
 import ProjectButton from './components/ProjectButton';
-
-
 
 const App = () => {
   // query the projects and resources
@@ -31,26 +28,15 @@ const App = () => {
 
   return (
     <>
-    <Router>
-        <div >
+      <Router>
+        <div>
           <Navbar />
           <Dashboard resources={resources} projects={projects} />
           <Routes>
-            
-            <Route 
-                  path="/login" 
-                  element={<Login />}
-                />
-            <Route 
-                  path="/signup" 
-                  element={<Signup />}
-                />
-            
-            </Routes>
-        
-
-        
-          </div>
+            <Route path='/login' element={<Login />} />
+            <Route path='/signup' element={<Signup />} />
+          </Routes>
+        </div>
       </Router>
     </>
   );
