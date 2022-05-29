@@ -1,6 +1,5 @@
 import React from 'react';
 import Dashboard from './components/Dashboard';
-import Navbar from './components/Navbar';
 import { useQuery } from '@apollo/client';
 import { GETALL_PROJECTS, GETALL_RESOURCES } from './utils/queries';
 import { setContext } from '@apollo/client/link/context';
@@ -37,7 +36,7 @@ const App = () => {
     <>
     <Router>
         <div >
-          <Navbar />
+          
           <Dashboard resources={resources} projects={projects} />
           <Routes>
             
