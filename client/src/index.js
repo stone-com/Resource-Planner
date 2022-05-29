@@ -1,9 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+} from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 // import 'bootstrap/dist/css/bootstrap.min.css';
-
+import { store } from './store';
+import { Provider } from 'react-redux';
 
 import App from './App';
 
@@ -11,7 +17,6 @@ import App from './App';
 const httpLink = createHttpLink({
   uri: '/graphql',
 });
-
 
 const authLink = setContext((_, { headers }) => {
   // get the authentication token from local storage if it exists
@@ -30,11 +35,12 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <ApolloProvider client={client}>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </ApolloProvider>
 );
 
