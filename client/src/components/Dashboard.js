@@ -6,6 +6,7 @@ import { useContext } from 'react';
 import SummaryNumber from './SummaryNumber';
 import ResourceList from './ResourceList';
 import ProjectList from './ProjectList';
+import ProjectButton from './ProjectButton';
 
 const Dashboard = ({}) => {
   // declare state for projects and resources.
@@ -36,6 +37,7 @@ const Dashboard = ({}) => {
             title={'Resources needed'}
           />
         </Grid>
+        <ProjectButton />
         <Grid item xs={12}>
           <ProjectList />
         </Grid>

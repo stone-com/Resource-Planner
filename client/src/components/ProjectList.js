@@ -87,7 +87,7 @@ export default function ProjectList() {
     let project = projectArray[i];
     console.log('project rray 1', project);
     rows.push({
-      id: 1,
+      id: i,
       projectName: project.title,
       description: project.description,
       allocation: project.allocation,
