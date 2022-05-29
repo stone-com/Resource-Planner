@@ -3,10 +3,14 @@ const { Schema, model } = require('mongoose');
 const projectSchema = new Schema({
   title: {
     type: String,
+    required:true,
+
   },
 
   description: {
     type: String,
+    required:true,
+
   },
   
   allocation: {
@@ -16,6 +20,7 @@ const projectSchema = new Schema({
 
   requiredResNumber: {
     type: Number,
+    default:4
   },
   completed: {
     type: Boolean,

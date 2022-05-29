@@ -6,12 +6,19 @@ module.exports = {
             title:req.body[1].title,
             description:req.body[1].description,
             requiredResNumber:req.body[1].requiredResNumber,
-            completed:req.body[1].completed,
 
+allocation:req.body[1].allocation,
 createdAt:req.body[1].createdAt,
 assignedResources:req.body[0]
         });
-        // console.log('after create',project)
+
+
+  project.assignedResources.map((id)=>{
+    Resource.findOneAndUpdate({ _id:id },{$addToSet:{assignedProjects:project._id},$inc:{availability:- project.allocation}},{new:true,runValidators:true}, function (err, updated) {
+        if (err) return handleError(err);
+        // console.log('%s %s is a %s.', updated);
+      });
+ })
 
         if (! project) {
             return res.status(400).json({message: "cannot create project please try again"});
@@ -19,6 +26,9 @@ assignedResources:req.body[0]
 
         res.status(200).json(project);
     },
+
+
+
     async getprojects(req, res) {
         const projects = await Project.find({});
         if (! projects) {

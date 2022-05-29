@@ -5,7 +5,6 @@ const resourceSchema = new Schema({
         type:String,
         required:true,
         trim:true,
-        unique:true
     },
     personPhoto:{
         type:String
