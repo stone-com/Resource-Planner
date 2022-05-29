@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
@@ -7,6 +7,10 @@ import { ADD_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
 
 const Signup = () => {
+
+  //navigate to routes using this hook
+  let navigate = useNavigate();
+
   const [formState, setFormState] = useState({
     userName: '',
     email: '',
@@ -38,6 +42,10 @@ const Signup = () => {
     }
   };
 
+  //go to the login page using the navigate hook
+  const goToLogin = async () =>{
+    navigate('/')
+  }
   return (
     <main className="flex-row justify-center mb-4">
       <div className="col-12 col-lg-10">
@@ -90,6 +98,13 @@ const Signup = () => {
                 {error.message}
               </div>
             )}
+            <button className="btn btn-block btn-primary"
+                  style={{ cursor: 'pointer' }}
+                  type="button"
+                  onClick={goToLogin}
+                >
+                  Login
+                  </button>
           </div>
         </div>
       </div>
