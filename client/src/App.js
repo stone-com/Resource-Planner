@@ -11,7 +11,6 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 
 const App = () => {
-
   //use state for login
   // const {}
 
@@ -30,26 +29,15 @@ const App = () => {
 
   return (
     <>
-    <Router>
-          <Routes>
-            <Route
-              path='/dashboard'
-              element={<Dashboard resources={resources} projects={projects} />}
-            >
-              
-          
-            </Route>
-            
-            <Route 
-                  path="/" 
-                  element={<Login />}
-                />
-
-            <Route 
-                  path="/signup" 
-                  element={<Signup />}
-                />          
-            </Routes>
+      <Router>
+        <Routes>
+          <Route
+            path='/dashboard'
+            element={<Dashboard resources={resources} projects={projects} />}
+          />
+          <Route path='/' element={<Login />} />
+          <Route path='/signup' element={<Signup />} />
+        </Routes>
       </Router>
     </>
   );

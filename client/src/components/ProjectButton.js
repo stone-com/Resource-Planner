@@ -3,7 +3,6 @@ import { Modal, Button, FloatingLabel, Form } from 'react-bootstrap';
 import { getResources, createProject } from '../utils/api';
 import { AiOutlinePlus } from 'react-icons/ai';
 
-
 export default function ProjectButton() {
   const [show, setShow] = useState(false);
   const [personName, setPersonName] = useState([]);
@@ -52,12 +51,15 @@ export default function ProjectButton() {
     e.preventDefault();
     try {
       console.log('check availaboy', formData);
-
+      const submitData = {
+        ...formData,
+        assignedResource: userinfo.assignedResource,
+      };
+      console.log(submitData);
       const res = await createProject([userinfo.assignedResource, formData]);
       console.log('check my data', formData, userinfo.assignedResource);
       if (!res.ok) {
         throw new Error('something went wrong!');
-        window.alert('Something went wrong please try again!!');
       }
       window.alert('Project created sucessfully');
       setFormData([]);
@@ -75,14 +77,14 @@ export default function ProjectButton() {
     const filterResources = personName.filter(
       (newData) => newData.availability >= formData.allocation
     );
-
     setPersonName(filterResources);
   }, [formData.allocation]);
 
   return (
     <>
       <Button variant='success' onClick={handleShow}>
-        <AiOutlinePlus /> Add new project
+        <AiOutlinePlus />
+        Add new project
       </Button>
 
       <Modal show={show} onHide={handleClose}>
