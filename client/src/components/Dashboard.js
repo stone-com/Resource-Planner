@@ -1,52 +1,68 @@
 import { Container, Grid } from '@mui/material';
 import { useState } from 'react';
 import SummaryCard from './SummaryCard';
-import ProgressRing from './ProgressRing';
-import { useContext } from 'react';
-import SummaryNumber from './SummaryNumber';
 import ResourceList from './ResourceList';
 import ProjectList from './ProjectList';
+import ProjectButton from './ProjectButton';
+import SectionHeader from './SectionHeader';
 import Navbar from './Navbar'
 
-const Dashboard = ({}) => {
+const Dashboard = () => {
   // declare state for projects and resources.
   const [resources, setResources] = useState([]);
   const [projects, setProjects] = useState([]);
 
   return (
     <>
-      <Navbar />
-      <Container>
-        <Grid container spacing={4} sx={{ marginTop: 1 }}>
-          <Grid item xs={6} md={3}>
-            <SummaryCard icon={<ProgressRing />} title={'Total Capacity'} />
-          </Grid>
-          <Grid item xs={6} md={3}>
-            <SummaryCard
-              icon={<SummaryNumber number={3} />}
-              title={'Total Resources'}
-            />
-          </Grid>
-          <Grid item xs={6} md={3}>
-            <SummaryCard
-              icon={<SummaryNumber number={12} />}
-              title={'Hours Available'}
-            />
-          </Grid>
-          <Grid item xs={6} md={3}>
-            <SummaryCard
-              icon={<SummaryNumber number={3} />}
-              title={'Resources needed'}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <ProjectList />
-          </Grid>
-          <Grid item xs={12}>
-            <ResourceList />
-          </Grid>
+    <Navbar />
+    <Container>
+      <Grid container spacing={4} sx={{ marginTop: 1 }}>
+        <Grid item xs={6} md={3}>
+          <SummaryCard
+            number={'40%'}
+            title={'Total Capacity'}
+            icon={'fa-battery-half'}
+            color={'primary'}
+          />
         </Grid>
-      </Container>
+        <Grid item xs={6} md={3}>
+          <SummaryCard
+            number={3}
+            title={'Total Resources'}
+            icon={'fa-user'}
+            color={'danger'}
+          />
+        </Grid>
+        <Grid item xs={6} md={3}>
+          <SummaryCard
+            number={12}
+            title={'Hours Available'}
+            icon={'fa-hourglass'}
+            color={'success'}
+          />
+        </Grid>
+        <Grid item xs={6} md={3}>
+          <SummaryCard
+            number={3}
+            title={'Resources needed'}
+            icon={'fa-user-plus'}
+            color={'info'}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <SectionHeader title={'Projects'} addButton={<ProjectButton />} />
+        </Grid>
+        <Grid item xs={12}>
+          <ProjectList />
+        </Grid>
+        <Grid item xs={12}>
+          <SectionHeader title={'Resources'} />
+        </Grid>
+        <Grid item xs={12}>
+          <ResourceList />
+        </Grid>
+      </Grid>
+    </Container>
     </>
   );
 };
