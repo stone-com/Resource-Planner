@@ -1,6 +1,5 @@
 import React from 'react';
 import Dashboard from './components/Dashboard';
-import Navbar from './components/Navbar';
 import { useQuery } from '@apollo/client';
 import { GETALL_PROJECTS, GETALL_RESOURCES } from './utils/queries';
 import { setContext } from '@apollo/client/link/context';
@@ -16,6 +15,10 @@ import ProjectButton from './components/ProjectButton';
 
 
 const App = () => {
+
+  //use state for login
+  // const {}
+
   // query the projects and resources
   const { data: resourcesData } = useQuery(GETALL_RESOURCES);
   const { data: projectsData } = useQuery(GETALL_PROJECTS);
@@ -32,15 +35,20 @@ const App = () => {
   return (
     <>
     <Router>
-        <div >
-          <Navbar />
-          <Dashboard resources={resources} projects={projects} />
           <Routes>
+            <Route
+              path='/dashboard'
+              element={<Dashboard resources={resources} projects={projects} />}
+            >
+              
+          
+            </Route>
             
             <Route 
-                  path="/login" 
+                  path="/" 
                   element={<Login />}
                 />
+
             <Route 
                   path="/signup" 
                   element={<Signup />}
@@ -50,7 +58,7 @@ const App = () => {
         
 
         
-          </div>
+          
       </Router>
     </>
   );

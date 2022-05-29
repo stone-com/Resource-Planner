@@ -22,7 +22,7 @@ const typeDefs = gql`
 
   type User {
     _id: ID
-    username: String
+    userName: String
     email: String
     password: String
     customerId: Customer!
@@ -44,7 +44,7 @@ const typeDefs = gql`
     getAllResources: [Resource]!
     getSingleProject(projectId: ID!): Project
     getSingleResource(_id: ID!): Resource
-    getUser(username: String!): User
+    getUser(userName: String!): User
     me: User
   }
   type Mutation {
@@ -61,10 +61,10 @@ const typeDefs = gql`
     ): Project
     addResource(personName: String!): Resource
     addUser(
-      username: String!
+      userName: String!
       email: String!
       password: String!
-      customerId: ID!
+
     ): Auth
     login(email: String!, password: String!): Auth
   }
