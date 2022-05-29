@@ -1,6 +1,16 @@
-import React from 'react';
-
+import React, { useEffect, useState } from 'react';
+import { GETALL_PROJECTS, GETALL_RESOURCES } from '../utils/queries';
 import { DataGrid } from '@mui/x-data-grid';
+import { useQuery } from '@apollo/client';
+
+// const { data: projectsData } = useQuery(GETALL_PROJECTS);
+
+// let projects = [];
+// if (projectsData) {
+//   // save the gql query (data.query return) to variable
+//   projects = projectsData.getAllProjects;
+//   console.log('projects:', projects);
+// }
 
 const columns = [
   { field: 'id', headerName: 'ID', width: 80 },
@@ -45,7 +55,15 @@ const columns = [
 ];
 
 const rows = [
-  { id: 1, projectName: 'Project 1', description: 'First Project', allocation:20, requiredResources:4, completed: false, assignedResources: 'Stone'  },
+  {
+    id: 1,
+    projectName: 'Project 1',
+    description: 'First Project',
+    allocation: 20,
+    requiredResources: 4,
+    completed: false,
+    assignedResources: 'Stone',
+  },
   { id: 2, name: 'Namees', availability: '100%' },
   { id: 3, name: 'Mike', availability: '100%' },
   { id: 4, name: 'Cheng', availability: '100%' },
@@ -55,6 +73,16 @@ const rows = [
 ];
 
 export default function ProjectList() {
+  const [projects, setProjects] = useState([]);
+  const columns = [];
+  const rows = [];
+
+  const { loading, error, data } = useQuery(GETALL_PROJECTS);
+
+  if (loading) return 'Loading...';
+  if (error) return `Error! ${error.message}`;
+  let projectArray = data.getAllProjects;
+  console.log(projectArray[0]);
   return (
     <div style={{ height: 400, width: '100%' }}>
       <DataGrid
