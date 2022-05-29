@@ -1,18 +1,14 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './app.css';
 import React from 'react';
 import Dashboard from './components/Dashboard';
 import { useQuery } from '@apollo/client';
 import { GETALL_PROJECTS, GETALL_RESOURCES } from './utils/queries';
-import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
 
 //Pages from pages folder - login and signup
 import Login from './pages/Login';
 import Signup from './pages/Signup';
-
-import ProjectButton from './components/ProjectButton';
-
-
 
 const App = () => {
 
@@ -52,13 +48,8 @@ const App = () => {
             <Route 
                   path="/signup" 
                   element={<Signup />}
-                />
-            
+                />          
             </Routes>
-        
-
-        
-          
       </Router>
     </>
   );
