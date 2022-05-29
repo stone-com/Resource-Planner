@@ -6,6 +6,7 @@ import SummaryNumber from './SummaryNumber';
 import ResourceList from './ResourceList';
 import ProjectList from './ProjectList';
 import ProjectButton from './ProjectButton';
+import SectionHeader from './SectionHeader';
 
 const Dashboard = () => {
   // declare state for projects and resources.
@@ -24,8 +25,12 @@ const Dashboard = () => {
           />
         </Grid>
         <Grid item xs={6} md={3}>
-          <SummaryCard number={3} title={'Total Resources'} icon={'fa-user'} 
-          color={'danger'}/>
+          <SummaryCard
+            number={3}
+            title={'Total Resources'}
+            icon={'fa-user'}
+            color={'danger'}
+          />
         </Grid>
         <Grid item xs={6} md={3}>
           <SummaryCard
@@ -37,15 +42,20 @@ const Dashboard = () => {
         </Grid>
         <Grid item xs={6} md={3}>
           <SummaryCard
-         number={3}
+            number={3}
             title={'Resources needed'}
             icon={'fa-user-plus'}
             color={'info'}
           />
         </Grid>
-        <ProjectButton />
+        <Grid item xs={12}>
+          <SectionHeader title={'Projects'} addButton={<ProjectButton />} />
+        </Grid>
         <Grid item xs={12}>
           <ProjectList />
+        </Grid>
+        <Grid item xs={12}>
+          <SectionHeader title={'Resources'} />
         </Grid>
         <Grid item xs={12}>
           <ResourceList />

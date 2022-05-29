@@ -138,7 +138,7 @@ export default function ProjectButton() {
               </Form.Select>
             </FloatingLabel>
 
-            <FloatingLabel label='started Daye' className='mb-3'>
+            <FloatingLabel label='started Date' className='mb-3'>
               <Form.Control
                 type='date'
                 name='createdAt'
