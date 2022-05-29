@@ -5,9 +5,6 @@ import { LOGIN_USER } from '../utils/mutations';
 
 import Auth from '../utils/auth';
 
-//Signup form
-import Signup from './Signup';
-
 const Login = (props) => {
   let navigate = useNavigate();
 
@@ -46,7 +43,7 @@ const Login = (props) => {
   };
 
   //go to the signup page
-  const goToSignUp = async (event) =>{
+  const goToSignUp = async () =>{
     navigate('/signup')
   }
 
