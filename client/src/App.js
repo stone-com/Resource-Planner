@@ -16,6 +16,10 @@ import ProjectButton from './components/ProjectButton';
 
 
 const App = () => {
+
+  //use state for login
+  // const {}
+
   // query the projects and resources
   const { data: resourcesData } = useQuery(GETALL_RESOURCES);
   const { data: projectsData } = useQuery(GETALL_PROJECTS);
