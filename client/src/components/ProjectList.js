@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { GETALL_PROJECTS, GETALL_RESOURCES } from '../utils/queries';
-import { DataGrid } from '@mui/x-data-grid';
+import { DataGrid, gridColumnsSelector } from '@mui/x-data-grid';
 import { useQuery } from '@apollo/client';
+import { __Directive } from 'graphql';
 
 // const { data: projectsData } = useQuery(GETALL_PROJECTS);
 
@@ -74,15 +75,35 @@ const rows = [
 
 export default function ProjectList() {
   const [projects, setProjects] = useState([]);
-  const columns = [];
-  const rows = [];
+  // let columns = [];
+  let rows = [];
 
   const { loading, error, data } = useQuery(GETALL_PROJECTS);
+  // useEffect(() => {
+  //   let queryResults = data;
 
+  // //  console.log('QGA',queryReults.getAllProjects)
+  //   console.log('QUERY', queryReults);
+
+  // });
   if (loading) return 'Loading...';
   if (error) return `Error! ${error.message}`;
   let projectArray = data.getAllProjects;
-  console.log(projectArray[0]);
+  console.log('project rray 0', projectArray[0]);
+  for (let i = 0; i < projectArray.length; i++) {
+    let project = projectArray[i];
+    console.log('project rray 1', project);
+    rows.push({
+      id: 1,
+      projectName: 'Project 1',
+      description: 'First Project',
+      allocation: 20,
+      requiredResources: 4,
+      completed: false,
+      assignedResources: 'Stone',
+    });
+  }
+
   return (
     <div style={{ height: 400, width: '100%' }}>
       <DataGrid
