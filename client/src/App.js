@@ -35,15 +35,20 @@ const App = () => {
   return (
     <>
     <Router>
-        <div >
-          
-          <Dashboard resources={resources} projects={projects} />
           <Routes>
+            <Route
+              path='/dashboard'
+              element={<Dashboard resources={resources} projects={projects} />}
+            >
+              
+          
+            </Route>
             
             <Route 
-                  path="/login" 
+                  path="/" 
                   element={<Login />}
                 />
+
             <Route 
                   path="/signup" 
                   element={<Signup />}
@@ -53,7 +58,7 @@ const App = () => {
         
 
         
-          </div>
+          
       </Router>
     </>
   );
