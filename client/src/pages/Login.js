@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
 
@@ -9,6 +9,8 @@ import Auth from '../utils/auth';
 import Signup from './Signup';
 
 const Login = (props) => {
+  let navigate = useNavigate();
+
   const [formState, setFormState] = useState({ email: '', password: '' });
   const [login, { error, data }] = useMutation(LOGIN_USER);
 
@@ -45,7 +47,7 @@ const Login = (props) => {
 
   //go to the signup page
   const goToSignUp = async (event) =>{
-    <Signup/>
+    navigate('/signup')
   }
 
   return (
@@ -58,7 +60,7 @@ const Login = (props) => {
               <p>
                 Success! You may now head{' '}
                 {/* TODO Change to the dashboard */}
-                <Link to="/">back to the homepage.</Link>
+                <Link to="/dashboard">back to the homepage.</Link>
               </p>
             ) : (
               <form onSubmit={handleFormSubmit}>
