@@ -85,7 +85,7 @@ export default function ProjectList() {
   let projectArray = data.getAllProjects;
   for (let i = 0; i < projectArray.length; i++) {
     let project = projectArray[i];
-    console.log('project rray 1', project);
+    // console.log('project rray 1', project);
     rows.push({
       id: i,
       projectName: project.title,

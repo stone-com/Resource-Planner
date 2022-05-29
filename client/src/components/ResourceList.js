@@ -2,6 +2,7 @@ import React from 'react';
 import { GETALL_RESOURCES } from '../utils/queries';
 import { DataGrid } from '@mui/x-data-grid';
 import { useQuery } from '@apollo/client';
+import ProjectButton from './ProjectButton';
 
 const columns = [
   { field: 'id', headerName: 'ID', width: 80 },
@@ -33,7 +34,7 @@ export default function ResourceList() {
   // loop through arra of resources, create object with values for resource, then push to rows array for datagrid
   for (let i = 0; i < resourceArray.length; i++) {
     let resource = resourceArray[i];
-    console.log(`resource number ${i}:`, resource);
+    // console.log(`resource number ${i}:`, resource);
     rows.push({
       id: i,
       name: resource.personName,
@@ -49,7 +50,7 @@ export default function ResourceList() {
         columns={columns}
         pageSize={5}
         rowsPerPageOptions={[5]}
-        checkboxSelection
+        checkboxSelection = {false}
         disableSelectionOnClick
       />
     </div>

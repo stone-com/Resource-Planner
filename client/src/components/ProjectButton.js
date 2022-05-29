@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Modal, Button, FloatingLabel, Form } from 'react-bootstrap';
 import { getResources, createProject } from '../utils/api';
+import { AiOutlinePlus } from 'react-icons/ai';
+
 
 export default function ProjectButton() {
   const [show, setShow] = useState(false);
@@ -11,9 +13,17 @@ export default function ProjectButton() {
     assignedResource: [],
   });
 
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setShow(false);
+    setPersonName([]);
+    setFormData([]);
+    window.location.reload();
+  };
   const handleShow = () => setShow(true);
-
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({ ...formData, [name]: value });
+  };
   useEffect(() => {
     const getperson = async () => {
       const res = await getResources();
@@ -21,20 +31,16 @@ export default function ProjectButton() {
         console.log('error namees');
       }
       const data = await res.json();
+      console.log('data for you', data);
+
       setPersonName(data);
-      // console.log('Fetching data result',data)
     };
     getperson();
   }, []);
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setFormData({ ...formData, [name]: value });
-  };
 
   const handleChange2 = (e) => {
     const { value, checked } = e.target;
     const { assignedResource } = userinfo;
-    console.log(`${value} is ${checked}`);
     if (checked) {
       setUserInfo({
         assignedResource: [...assignedResource, value],
@@ -45,29 +51,38 @@ export default function ProjectButton() {
   const handleProjectData = async (e) => {
     e.preventDefault();
     try {
-      console.log('needs data', formData, userinfo.assignedResource);
-      const res = await createProject([userinfo.assignedResource, formData]);
+      console.log('check availaboy', formData);
 
+      const res = await createProject([userinfo.assignedResource, formData]);
+      console.log('check my data', formData, userinfo.assignedResource);
       if (!res.ok) {
         throw new Error('something went wrong!');
         window.alert('Something went wrong please try again!!');
       }
       window.alert('Project created sucessfully');
-      setFormData('');
-      setPersonName(' ');
+      setFormData([]);
+      setPersonName([]);
+      setShow(false);
 
       const project = await res.json();
-      if (!project.ok) {
-      }
+      window.location.reload();
     } catch (err) {
       console.error(err);
     }
   };
 
+  useEffect(() => {
+    const filterResources = personName.filter(
+      (newData) => newData.availability >= formData.allocation
+    );
+
+    setPersonName(filterResources);
+  }, [formData.allocation]);
+
   return (
     <>
-      <Button variant='primary' onClick={handleShow}>
-        Add new project
+      <Button variant='success' onClick={handleShow}>
+        <AiOutlinePlus /> Add new project
       </Button>
 
       <Modal show={show} onHide={handleClose}>
@@ -125,20 +140,7 @@ export default function ProjectButton() {
               />
             </FloatingLabel>
 
-            <FloatingLabel label='Project Status/completed' className='mb-3'>
-              <Form.Select
-                aria-label='Floating label select example'
-                name='completed'
-                onChange={handleInputChange}
-              >
-                <option value=''></option>
-
-                <option value='true'>true</option>
-                <option value='false'>false</option>
-              </Form.Select>
-            </FloatingLabel>
-
-            <FloatingLabel label='started Date' className='mb-3'>
+            <FloatingLabel label='started Daye' className='mb-3'>
               <Form.Control
                 type='date'
                 name='createdAt'
@@ -153,11 +155,17 @@ export default function ProjectButton() {
             onChange={handleChange2}
           >
             <legend>Choose Assigned Resources Names:</legend>
+
             {personName.map((name) => (
               <div key={name._id}>
-                <input type='checkbox' value={name._id} />
-                <label for='personName' class='p-1'>
+                <input
+                  type='checkbox'
+                  value={name._id}
+                  onClick={handleChange2}
+                />
+                <label>
                   {name.personName}
+                  {name.availability}
                 </label>
               </div>
             ))}
