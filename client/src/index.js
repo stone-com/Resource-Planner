@@ -8,7 +8,7 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 // import 'bootstrap/dist/css/bootstrap.min.css';
-import { store } from './store';
+import { store } from './redux/store';
 import { Provider } from 'react-redux';
 
 import App from './App';
