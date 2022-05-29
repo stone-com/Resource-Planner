@@ -4,6 +4,7 @@ import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
 
 import Auth from '../utils/auth';
+import './login.css';
 
 const Login = (props) => {
   let navigate = useNavigate();
@@ -48,6 +49,7 @@ const Login = (props) => {
   }
 
   return (
+    <section>
     <main className="flex-row justify-center mb-4">
       <div className="col-12 col-lg-10">
         <div className="card">
@@ -105,6 +107,7 @@ const Login = (props) => {
         </div>
       </div>
     </main>
+    </section>
   );
 };
 
