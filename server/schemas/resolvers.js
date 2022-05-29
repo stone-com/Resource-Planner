@@ -24,7 +24,7 @@ const resolvers = {
 
     //User queries
     getUser: async () => {
-      return User.findOne({ username });
+      return User.findOne({ userName });
     },
     me: async (parent, args, context) => {
       if (context.user) {
@@ -59,12 +59,12 @@ const resolvers = {
       return await Resource.create({ personName });
     },
     //User Mutations - login and signup
-    addUser: async (parent, { username, email, password }, context) => {
+    addUser: async (parent, { userName, email, password }) => {
       const user = await User.create({
-        username,
+        userName,
         email,
         password,
-        customerId: context.customer.customerId,
+        // customerId: context.customer.customerId,
       });
       const token = signToken(user);
       return { token, user };

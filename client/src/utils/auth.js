@@ -29,11 +29,13 @@ class AuthService {
 
     login(idToken) {
     localStorage.setItem('id_token', idToken);
-    window.location.assign('/');
+    // TODO when dashboard url/route is created update this field
+    window.location.assign('/dashboard');
     }
 
     logout() {
     localStorage.removeItem('id_token');
+    //TODO Take the user back to the login page
     window.location.reload();
     }
 }

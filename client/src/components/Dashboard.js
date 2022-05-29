@@ -1,12 +1,11 @@
 import { Container, Grid } from '@mui/material';
 import { useState } from 'react';
 import SummaryCard from './SummaryCard';
-import ProgressRing from './ProgressRing';
-import SummaryNumber from './SummaryNumber';
 import ResourceList from './ResourceList';
 import ProjectList from './ProjectList';
 import ProjectButton from './ProjectButton';
 import SectionHeader from './SectionHeader';
+import Navbar from './Navbar'
 
 const Dashboard = () => {
   // declare state for projects and resources.
@@ -14,6 +13,8 @@ const Dashboard = () => {
   const [projects, setProjects] = useState([]);
 
   return (
+    <>
+    <Navbar />
     <Container>
       <Grid container spacing={4} sx={{ marginTop: 1 }}>
         <Grid item xs={6} md={3}>
@@ -62,6 +63,7 @@ const Dashboard = () => {
         </Grid>
       </Grid>
     </Container>
+    </>
   );
 };
 

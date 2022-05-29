@@ -1,5 +1,7 @@
+const bcrypt = require('bcrypt')
 //User Authentication Model
 const {Schema, model} = require('mongoose');
+
 
 const userSchema = new Schema({
     //user ID is set to default mongo ids
