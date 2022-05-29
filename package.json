@@ -27,7 +27,9 @@
   "homepage": "https://github.com/stone-com/Resource-Planner#readme",
   "dependencies": {
     "@apollo/client": "^3.6.5",
+    "bcrypt": "^5.0.1",
     "concurrently": "^7.2.0",
-    "graphql": "^16.5.0"
+    "graphql": "^16.5.0",
+    "jsonwebtoken": "^8.5.1"
   }
 }

@@ -1,23 +1,2 @@
+/node_modules
 
-node_modules
-<<<<<<< HEAD
-node_modules
-server/node_modules/.bin/apollo-pbjs
-server/node_modules/.bin/apollo-pbts
-server/node_modules/.bin/is-ci
-server/node_modules/.bin/mime
-server/node_modules/.bin/nodemon
-server/node_modules/.bin/nodetouch
-server/node_modules/.bin/nopt
-server/node_modules/.bin/rc
-server/node_modules/.bin/semver
-server/node_modules/.bin/sha.js
-server/node_modules/.bin/uuid
-server/node_modules/.bin/xss
-server/node_modules/make-dir/node_modules/.bin/semver
-server/node_modules/package-json/node_modules/.bin/semver
-server/node_modules/semver-diff/node_modules/.bin/semver
-server/node_modules/update-notifier/node_modules/.bin/semver
-.bin
-=======
->>>>>>> 0f0c9c0ceb927aff941452fe694733d6bd5baa2b
