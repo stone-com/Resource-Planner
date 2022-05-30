@@ -47,7 +47,7 @@ const columns = [
 ];
 
 export default function ProjectList() {
-  const { projects, setProjects } = useContext(DataContext);
+  const { projects } = useContext(DataContext);
   let rows = [];
   for (let i = 0; i < projects.length; i++) {
     let project = projects[i];

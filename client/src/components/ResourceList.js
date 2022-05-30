@@ -1,7 +1,6 @@
-import React from 'react';
-import { GETALL_RESOURCES } from '../utils/queries';
+import React, { useContext } from 'react';
 import { DataGrid } from '@mui/x-data-grid';
-import { useQuery } from '@apollo/client';
+import { DataContext } from '../contexts/DataContext';
 
 const columns = [
   { field: 'id', headerName: 'ID', width: 80 },
@@ -23,16 +22,12 @@ const columns = [
 ];
 
 export default function ResourceList() {
+  // pull in resource state from context
+  const { resources } = useContext(DataContext);
   let rows = [];
-  // query all resources
-  const { loading, error, data } = useQuery(GETALL_RESOURCES);
-
-  if (loading) return 'Loading...';
-  if (error) return `Error! ${error.message}`;
-  let resourceArray = data.getAllResources;
   // loop through arra of resources, create object with values for resource, then push to rows array for datagrid
-  for (let i = 0; i < resourceArray.length; i++) {
-    let resource = resourceArray[i];
+  for (let i = 0; i < resources.length; i++) {
+    let resource = resources[i];
     // console.log(`resource number ${i}:`, resource);
     rows.push({
       id: i,
@@ -49,7 +44,7 @@ export default function ResourceList() {
         columns={columns}
         pageSize={5}
         rowsPerPageOptions={[5]}
-        checkboxSelection = {false}
+        checkboxSelection={false}
         disableSelectionOnClick
       />
     </div>

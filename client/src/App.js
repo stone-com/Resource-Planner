@@ -18,7 +18,7 @@ const App = () => {
   // query the projects and resources
   const { data: resourcesData } = useQuery(GETALL_RESOURCES);
   const { data: projectsData } = useQuery(GETALL_PROJECTS);
-  console.log(projectsData);
+
   useEffect(() => {
     if (resourcesData && resourcesData.getAllResources) {
       setResources(resourcesData.getAllResources);
