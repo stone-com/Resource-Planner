@@ -4,8 +4,6 @@ import { AiOutlinePlus } from 'react-icons/ai';
 import { ADD_PROJECT } from '../utils/mutations';
 import { DataContext } from '../contexts/DataContext';
 import { useMutation, useQuery } from '@apollo/client';
-import { GETALL_RESOURCES } from '../utils/queries';
-import { useLazyQuery } from '@apollo/client';
 
 export default function ProjectButton() {
   // bring in resoures and projects from context
@@ -63,6 +61,7 @@ export default function ProjectButton() {
         assignedResources: formData.assignedResources,
       },
     });
+
 
     // const submitData = {
     //   ...formData,
