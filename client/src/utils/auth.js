@@ -33,10 +33,13 @@ class AuthService {
     window.location.assign('/dashboard');
     }
 
-    logout() {
+    logout(e) {
     localStorage.removeItem('id_token');
     //TODO Take the user back to the login page
-    window.location.reload();
+    e.preventDefault();
+    // window.location.reload();
+    window.location.assign('/');
+    
     }
 }
 
