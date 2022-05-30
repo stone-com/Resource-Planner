@@ -7,8 +7,8 @@ import { GETALL_PROJECTS, GETALL_RESOURCES } from './utils/queries';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 //Pages from pages folder - login and signup
-import Login from './pages/Login';
-import Signup from './pages/Signup';
+import Login from './pages/Login.js';
+import Signup from './pages/Signup.js';
 
 const App = () => {
 
