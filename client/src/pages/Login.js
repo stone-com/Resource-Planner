@@ -49,7 +49,8 @@ const Login = (props) => {
   }
 
   return (
-    <section>
+    <div id='loginPage'>
+    <section id ="section">
     <main className="flex-row justify-center mb-4">
       <div className="col-12 col-lg-10">
         <div className="card">
@@ -108,6 +109,7 @@ const Login = (props) => {
       </div>
     </main>
     </section>
+    </div>
   );
 };
 
