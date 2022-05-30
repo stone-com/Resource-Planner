@@ -1,11 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Button } from 'react-bootstrap';
 import { AiOutlinePlus } from 'react-icons/ai';
 import { Form, Modal, FloatingLabel } from 'react-bootstrap';
-import { createResource } from '../utils/api';
+import { ADD_RESOURCE } from '../utils/mutations';
 import { useNavigate } from 'react-router-dom';
+import { useMutation } from '@apollo/client';
+import { DataContext } from '../contexts/DataContext';
 
 export default function ResourceModal() {
+  // bring in setResources from context
+  const { resources, setResources } = useContext(DataContext);
+  // bring in ADD_RESOURCE mutation
+  const [addResource, { data, loading, error }] = useMutation(ADD_RESOURCE);
+
   const [show, setShow] = useState(false);
   const [formData, setFormData] = useState([]);
   let navigate = useNavigate();
@@ -20,27 +27,23 @@ export default function ResourceModal() {
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
   };
+  // handle form submit
   const sendData = async (e) => {
     e.preventDefault();
-    try {
-      const res = await createResource(formData);
-      if (!res.ok) {
-        window.alert(`Please fill all the fields`);
-
-        throw new Error('something went wrong!');
-
-        setFormData([]);
-      }
-      const result = res.json();
-
-      window.alert(`🎉🎉🎉 Congrats  has been Added Succesfully`);
-    } catch (error) {
-      console.error(error);
-    }
+    addResource({ variables: { personName: formData.personName } });
+    console.log(formData);
+    setResources([
+      ...resources,
+      {
+        personName: formData.personName,
+        availability: 100,
+        assignedProjects: [],
+      },
+    ]);
 
     setFormData([]);
     setShow(false);
-    window.location.reload();
+    window.alert('Resource added successfully');
   };
 
   return (
@@ -65,26 +68,6 @@ export default function ResourceModal() {
                 required='required'
               />
             </Form.Group>
-
-            <FloatingLabel
-              controlId='floatingSelect'
-              label='Resource Availabilty'
-            >
-              <Form.Select
-                aria-label='Floating label select example'
-                name='availability'
-                onChange={handleInputChange}
-                required
-              >
-                <option></option>
-                <option value='0'>0</option>
-
-                <option value='25'>25</option>
-                <option value='50'>50</option>
-                <option value='75'>75</option>
-                <option value='100'>100</option>
-              </Form.Select>
-            </FloatingLabel>
           </Form>
         </Modal.Body>
         <Modal.Footer>
