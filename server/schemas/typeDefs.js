@@ -55,6 +55,7 @@ const typeDefs = gql`
       title: String!
       allocation: Int!
       requiredResNumber: Int!
+      assignedResources: [ID]
     ): Project
     updateProject(
       projectId: ID!

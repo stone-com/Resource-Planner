@@ -50,19 +50,20 @@ export default function ProjectButton() {
 
   const handleProjectData = async (e) => {
     e.preventDefault();
-    console.log('resourcesassigned', projectResources);
-    setFormData({ ...formData, assignedResources: projectResources });
+    await setFormData({ ...formData, assignedResources: projectResources });
     console.log('form submit data:', formData);
     setProjectResources([]);
-    await addProject({
+
+    addProject({
       variables: {
         title: formData.title,
         description: formData.description,
-        allocation: formData.allocation,
-        requiredResNumber: formData.requiredResNumber,
+        allocation: parseInt(formData.allocation, 10),
+        requiredResNumber: parseInt(formData.requiredResNumber, 10),
         assignedResources: formData.assignedResources,
       },
     });
+
     // const submitData = {
     //   ...formData,
     //   assignedResource: userinfo.assignedResource,
@@ -74,8 +75,7 @@ export default function ProjectButton() {
     //   throw new Error('something went wrong!');
     // }
     // window.alert('Project created sucessfully');
-    
-    console.log('rsn:', projectResources)
+
     setFormData([]);
     setPersonName([]);
     setShow(false);
@@ -86,7 +86,6 @@ export default function ProjectButton() {
       (newData) => newData.availability >= formData.allocation
     );
     setPersonName(filterResources);
-    console.log(personName);
   }, [formData.allocation]);
 
   return (
@@ -134,10 +133,10 @@ export default function ProjectButton() {
               >
                 <option value=''></option>
 
-                <option value='25'>25%</option>
-                <option value='50'>50%</option>
-                <option value='75'>75%</option>
-                <option value='100'>100%</option>
+                <option value={25}>25%</option>
+                <option value={50}>50%</option>
+                <option value={75}>75%</option>
+                <option value={100}>100%</option>
               </Form.Select>
             </FloatingLabel>
 
