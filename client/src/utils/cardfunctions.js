@@ -24,7 +24,7 @@ export const getHoursAvailable = (projectArray, resourceArray) => {
   //   create array for total allocation per project (num resources * allocation)
   const totalAllocationArray = [];
   projectArray.forEach((project) => {
-    const allocationSum = project.allocation * project.assignedResources.length || 1;
+    const allocationSum = project.allocation * project.assignedResources.length;
     totalAllocationArray.push(allocationSum);
   });
   //   use .reduce on allocationSum to get total sum of all items in array
