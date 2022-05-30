@@ -4,11 +4,14 @@ import { getResources, createProject } from '../utils/api';
 import { AiOutlinePlus } from 'react-icons/ai';
 import { ADD_PROJECT } from '../utils/mutations';
 import { DataContext } from '../contexts/DataContext';
+import { useMutation } from '@apollo/client';
 
 export default function ProjectButton() {
   // bring in resoures and projects from context
   const { resources, setResources, projects, setProjects } =
     useContext(DataContext);
+  // bring in mutations
+  const [addProject, { data, loading, error }] = useMutation(ADD_PROJECT);
   const [show, setShow] = useState(false);
   const [personName, setPersonName] = useState([]);
   const [formData, setFormData] = useState([]);
@@ -24,25 +27,30 @@ export default function ProjectButton() {
     window.location.reload();
   };
   const handleShow = () => setShow(true);
+  // when an input is changed, set the form data state to new data
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
   };
-  useEffect(() => {
-    const getperson = async () => {
-      const res = await getResources();
-      if (!res.ok) {
-        console.log('error namees');
-      }
-      const data = await res.json();
-      console.log('data for you', data);
 
-      setPersonName(data);
-    };
-    getperson();
+  // set PersonName state to resources(from context) this will be filtered through to display in the form selection for assigned resources
+  useEffect(() => {
+    // const getperson = async () => {
+    //   const res = await getResources();
+    //   if (!res.ok) {
+    //     console.log('error namees');
+    //   }
+    //   const data = await res.json();
+    //   console.log('data for you', data);
+
+    //   setPersonName(data);
+    // };
+    // getperson();
+    setPersonName(resources);
   }, []);
 
   const handleChange2 = (e) => {
+    console.log(e.target);
     const { value, checked } = e.target;
     const { assignedResource } = userinfo;
     if (checked) {
@@ -69,16 +77,15 @@ export default function ProjectButton() {
     setFormData([]);
     setPersonName([]);
     setShow(false);
-
-    const project = await res.json();
     window.location.reload();
   };
 
   useEffect(() => {
-    const filterResources = personName.filter(
+    const filterResources = resources.filter(
       (newData) => newData.availability >= formData.allocation
     );
     setPersonName(filterResources);
+    console.log(personName);
   }, [formData.allocation]);
 
   return (
@@ -165,6 +172,7 @@ export default function ProjectButton() {
                   type='checkbox'
                   value={name._id}
                   onClick={handleChange2}
+                  // onClick={(e) => console.log(e)}
                 />
                 <label>
                   {name.personName}

@@ -27,6 +27,7 @@ export const ADD_USER = gql`
 export const ADD_RESOURCE = gql`
   mutation addResource($personName: String!) {
     addResource(personName: $personName) {
+      _id
       personName
     }
   }

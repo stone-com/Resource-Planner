@@ -1,6 +1,7 @@
 export const getCapacity = (resourceArray) => {
   //   console.log(resourceArray);
   let totalResourcesCapacity = resourceArray.length * 100;
+  // console.log(totalResourcesCapacity);
 
   //   create array containing only resource.availability value, so we can reduce it and get the sum
   let availabilityValues = [];
@@ -9,7 +10,7 @@ export const getCapacity = (resourceArray) => {
   });
   //   console.log(availabilityValues);
   let availabilityTotal = availabilityValues.reduce((a, b) => a + b, 0);
-  //   console.log(availabilityTotal);
+    // console.log('availabilitytotal', availabilityTotal);
 
   return Math.floor((availabilityTotal / totalResourcesCapacity) * 100);
 };
