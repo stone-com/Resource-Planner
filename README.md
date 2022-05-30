@@ -5,7 +5,7 @@ Resource Planner was designed for the manager class in companies or organization
 ## Table of Contents
     
 - [Installation](#installation)
-- [Usage](#Usage)
+- [Usage](## Usage)
 - [Techniques](#Techniques)
 - [License](#Licensing)
 - [Team Members](#teammembers)
