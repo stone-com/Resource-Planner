@@ -11,6 +11,7 @@ import {
   getCapacity,
   getTotalResources,
   getHoursAvailable,
+  getResourcesNeeded,
 } from '../utils/cardfunctions';
 import { DataContext } from '../contexts/DataContext';
 
@@ -40,7 +41,8 @@ const Dashboard = () => {
           </Grid>
           <Grid item xs={6} md={3}>
             <SummaryCard
-              number={getHoursAvailable(projects, resources)}
+              // number={getHoursAvailable(projects, resources)}
+              number={4}
               title={'Hours Available'}
               icon={'fa-hourglass'}
               color={'success'}
@@ -48,7 +50,7 @@ const Dashboard = () => {
           </Grid>
           <Grid item xs={6} md={3}>
             <SummaryCard
-              number={3}
+              number={getResourcesNeeded(projects, resources)}
               title={'Resources needed'}
               icon={'fa-user-plus'}
               color={'info'}
