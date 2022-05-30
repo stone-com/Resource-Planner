@@ -1,17 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { GETALL_PROJECTS, GETALL_RESOURCES } from '../utils/queries';
-import { DataGrid, gridColumnsSelector } from '@mui/x-data-grid';
+import React, { useContext } from 'react';
+import { GETALL_PROJECTS } from '../utils/queries';
+import { DataGrid } from '@mui/x-data-grid';
 import { useQuery } from '@apollo/client';
-import { __Directive } from 'graphql';
-
-// const { data: projectsData } = useQuery(GETALL_PROJECTS);
-
-// let projects = [];
-// if (projectsData) {
-//   // save the gql query (data.query return) to variable
-//   projects = projectsData.getAllProjects;
-//   console.log('projects:', projects);
-// }
+import { DataContext } from '../contexts/DataContext';
 
 const columns = [
   { field: 'id', headerName: 'ID', width: 80 },
@@ -55,36 +46,11 @@ const columns = [
   },
 ];
 
-const rows = [
-  {
-    id: 1,
-    projectName: 'Project 1',
-    description: 'First Project',
-    allocation: 20,
-    requiredResources: 4,
-    completed: false,
-    assignedResources: 'Stone',
-  },
-  { id: 2, name: 'Namees', availability: '100%' },
-  { id: 3, name: 'Mike', availability: '100%' },
-  { id: 4, name: 'Cheng', availability: '100%' },
-  { id: 5, name: 'Brian', availability: '100%' },
-  { id: 6, name: 'Ali', availability: '100%' },
-  { id: 7, name: 'Zakk', availability: '100%' },
-];
-
 export default function ProjectList() {
-  const [projects, setProjects] = useState([]);
-
+  const { projects } = useContext(DataContext);
   let rows = [];
-
-  const { loading, error, data } = useQuery(GETALL_PROJECTS);
-
-  if (loading) return 'Loading...';
-  if (error) return `Error! ${error.message}`;
-  let projectArray = data.getAllProjects;
-  for (let i = 0; i < projectArray.length; i++) {
-    let project = projectArray[i];
+  for (let i = 0; i < projects.length; i++) {
+    let project = projects[i];
     // console.log('project rray 1', project);
     rows.push({
       id: i,
