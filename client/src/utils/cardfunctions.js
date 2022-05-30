@@ -13,3 +13,12 @@ export const getCapacity = (resourceArray) => {
 
   return Math.floor((availabilityTotal / totalResourcesCapacity) * 100);
 };
+
+export const getTotalResources = (resourcesArray) => {
+  return resourcesArray.length;
+};
+
+export const getHoursAvailable = (projectArray, resourceArray) => {
+    // get total hours (total resources * 40 hours)
+  const totalHours = resourceArray.length * 40;
+};

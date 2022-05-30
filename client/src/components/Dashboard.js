@@ -7,7 +7,7 @@ import ProjectButton from './ProjectButton';
 import SectionHeader from './SectionHeader';
 import Navbar from './Navbar';
 import ResourceButton from './ResourceButton';
-import { getCapacity } from '../utils/cardfunctions';
+import { getCapacity, getTotalResources } from '../utils/cardfunctions';
 import { DataContext } from '../contexts/DataContext';
 
 const Dashboard = () => {
@@ -29,7 +29,7 @@ const Dashboard = () => {
           </Grid>
           <Grid item xs={6} md={3}>
             <SummaryCard
-              number={3}
+              number={getTotalResources(resources)}
               title={'Total Resources'}
               icon={'fa-user'}
               color={'danger'}
