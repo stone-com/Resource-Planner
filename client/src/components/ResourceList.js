@@ -2,7 +2,6 @@ import React from 'react';
 import { GETALL_RESOURCES } from '../utils/queries';
 import { DataGrid } from '@mui/x-data-grid';
 import { useQuery } from '@apollo/client';
-import ProjectButton from './ProjectButton';
 
 const columns = [
   { field: 'id', headerName: 'ID', width: 80 },

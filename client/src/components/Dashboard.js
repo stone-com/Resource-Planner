@@ -9,9 +9,6 @@ import Navbar from './Navbar'
 import ResourceButton from './ResourceButton';
 
 const Dashboard = () => {
-  // declare state for projects and resources.
-  const [resources, setResources] = useState([]);
-  const [projects, setProjects] = useState([]);
 
   return (
     <>

@@ -7,9 +7,7 @@ import {
   createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-// import 'bootstrap/dist/css/bootstrap.min.css';
-import { store } from './redux/store';
-import { Provider } from 'react-redux';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import App from './App';
 
@@ -38,9 +36,7 @@ const client = new ApolloClient({
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <ApolloProvider client={client}>
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <App />
   </ApolloProvider>
 );
 
