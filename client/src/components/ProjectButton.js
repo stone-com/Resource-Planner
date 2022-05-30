@@ -62,7 +62,7 @@ export default function ProjectButton() {
       },
     });
 
-
+    setProjects([...projects, formData]);
     // const submitData = {
     //   ...formData,
     //   assignedResource: userinfo.assignedResource,
