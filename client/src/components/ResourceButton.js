@@ -1,9 +1,8 @@
 import React, { useState, useContext } from 'react';
 import { Button } from 'react-bootstrap';
 import { AiOutlinePlus } from 'react-icons/ai';
-import { Form, Modal, FloatingLabel } from 'react-bootstrap';
+import { Form, Modal } from 'react-bootstrap';
 import { ADD_RESOURCE } from '../utils/mutations';
-import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { DataContext } from '../contexts/DataContext';
 import { useLazyQuery } from '@apollo/client';
@@ -18,8 +17,6 @@ export default function ResourceModal() {
 
   const [show, setShow] = useState(false);
   const [formData, setFormData] = useState([]);
-
-  let navigate = useNavigate();
 
   const handleClose = () => {
     setShow(false);

@@ -15,8 +15,10 @@ export default function ProjectButton() {
   const [show, setShow] = useState(false);
   // bring in mutations
   const [addProject] = useMutation(ADD_PROJECT);
+
   const [personName, setPersonName] = useState([]);
   const [formData, setFormData] = useState([]);
+  const [projectResources, setProjectResources] = useState([]);
 
   const handleClose = () => {
     setShow(false);
@@ -39,12 +41,19 @@ export default function ProjectButton() {
   const handleChange2 = (e) => {
     const { value, checked } = e.target;
     if (checked) {
+      if (projectResources.includes(value)) {
+        return;
+      }
+      setProjectResources((projectResources) => [...projectResources, value]);
     }
   };
-  
+
   const handleProjectData = async (e) => {
     e.preventDefault();
+    console.log('resourcesassigned', projectResources);
+    setFormData({ ...formData, assignedResources: projectResources });
     console.log('form submit data:', formData);
+    setProjectResources([]);
     await addProject({
       variables: {
         title: formData.title,
@@ -65,6 +74,8 @@ export default function ProjectButton() {
     //   throw new Error('something went wrong!');
     // }
     // window.alert('Project created sucessfully');
+    
+    console.log('rsn:', projectResources)
     setFormData([]);
     setPersonName([]);
     setShow(false);
