@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "test",
   "main": "index.js",
+  "proxy": "http://localhost:3001/graphql",
   "scripts": {
     "server": "json-server --watch db.json --port 4000 --middlewares ./range",
     "client": "npm start --prefix client",
