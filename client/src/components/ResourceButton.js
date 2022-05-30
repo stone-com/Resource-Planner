@@ -1,4 +1,4 @@
-import React, { useState, useContext, useQuery } from 'react';
+import React, { useState, useContext } from 'react';
 import { Button } from 'react-bootstrap';
 import { AiOutlinePlus } from 'react-icons/ai';
 import { Form, Modal, FloatingLabel } from 'react-bootstrap';
@@ -6,14 +6,15 @@ import { ADD_RESOURCE } from '../utils/mutations';
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { DataContext } from '../contexts/DataContext';
-
+import { useLazyQuery } from '@apollo/client';
+import { GETALL_RESOURCES } from '../utils/queries';
 
 export default function ResourceModal() {
   // bring in setResources from context
-  const { resources, setResources, refresh, setRefresh } = useContext(DataContext);
+  const { resources, setResources } = useContext(DataContext);
   // bring in ADD_RESOURCE mutation
   const [addResource] = useMutation(ADD_RESOURCE);
-  
+  const [queryResources] = useLazyQuery(GETALL_RESOURCES);
 
   const [show, setShow] = useState(false);
   const [formData, setFormData] = useState([]);
@@ -23,7 +24,7 @@ export default function ResourceModal() {
   const handleClose = () => {
     setShow(false);
     setFormData([]);
-    window.location.reload();
+    // window.location.reload();
   };
 
   const handleInputChange = (event) => {
@@ -31,7 +32,7 @@ export default function ResourceModal() {
     setFormData({ ...formData, [name]: value });
   };
   // handle form submit
-  const useSendData = async (e) => {
+  const sendData = async (e) => {
     e.preventDefault();
     addResource({ variables: { personName: formData.personName } });
     console.log(formData);
@@ -43,7 +44,7 @@ export default function ResourceModal() {
         assignedProjects: [],
       },
     ]);
-    setRefresh(refresh + 1);
+
     setFormData([]);
     setShow(false);
     window.alert('Resource added successfully');
@@ -77,7 +78,7 @@ export default function ResourceModal() {
           <Button variant='secondary' onClick={handleClose}>
             Close
           </Button>
-          <Button variant='primary' onClick={useSendData}>
+          <Button variant='primary' onClick={sendData}>
             Save Resource Data{' '}
           </Button>
         </Modal.Footer>

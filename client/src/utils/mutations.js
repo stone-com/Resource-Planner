@@ -52,7 +52,7 @@ export const ADD_PROJECT = gql`
       requiredResNumber
       createdAt
       assignedResources {
-        personName
+        _id
       }
     }
   }

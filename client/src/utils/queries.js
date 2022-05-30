@@ -31,3 +31,4 @@ export const GETALL_RESOURCES = gql`
     }
   }
 `;
+

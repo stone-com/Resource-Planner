@@ -1,42 +1,28 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { Modal, Button, FloatingLabel, Form } from 'react-bootstrap';
-import { getResources, createProject } from '../utils/api';
 import { AiOutlinePlus } from 'react-icons/ai';
 import { ADD_PROJECT } from '../utils/mutations';
 import { DataContext } from '../contexts/DataContext';
 import { useMutation, useQuery } from '@apollo/client';
 import { GETALL_RESOURCES } from '../utils/queries';
+import { useLazyQuery } from '@apollo/client';
 
 export default function ProjectButton() {
   // bring in resoures and projects from context
   const { resources, setResources, projects, setProjects } =
     useContext(DataContext);
-    // show state used for modal
-    const [show, setShow] = useState(false);
+  // show state used for modal
+  const [show, setShow] = useState(false);
   // bring in mutations
   const [addProject] = useMutation(ADD_PROJECT);
-  const { data } = useQuery(GETALL_RESOURCES);
-
-  useEffect(() => {
-    if (data && data.getAllResources) {
-      console.log('data', data)
-      setProjects(data.getAllResources);
-    }
-  }, [show, setResources]);
-
- 
   const [personName, setPersonName] = useState([]);
   const [formData, setFormData] = useState([]);
-
-  const [userinfo, setUserInfo] = useState({
-    assignedResource: [],
-  });
 
   const handleClose = () => {
     setShow(false);
     setPersonName([]);
     setFormData([]);
-    window.location.reload();
+    // window.location.reload();
   };
   const handleShow = () => setShow(true);
   // when an input is changed, set the form data state to new data
@@ -47,49 +33,41 @@ export default function ProjectButton() {
 
   // set PersonName state to resources(from context) this will be filtered through to display in the form selection for assigned resources
   useEffect(() => {
-    // const getperson = async () => {
-    //   const res = await getResources();
-    //   if (!res.ok) {
-    //     console.log('error namees');
-    //   }
-    //   const data = await res.json();
-    //   console.log('data for you', data);
-
-    //   setPersonName(data);
-    // };
-    // getperson();
     setPersonName(resources);
   }, []);
 
   const handleChange2 = (e) => {
-    console.log(e.target);
     const { value, checked } = e.target;
-    const { assignedResource } = userinfo;
     if (checked) {
-      setUserInfo({
-        assignedResource: [...assignedResource, value],
-      });
     }
   };
-
+  
   const handleProjectData = async (e) => {
     e.preventDefault();
-    console.log('check availaboy', formData);
-    const submitData = {
-      ...formData,
-      assignedResource: userinfo.assignedResource,
-    };
-    console.log(submitData);
-    const res = await createProject([userinfo.assignedResource, formData]);
-    console.log('check my data', formData, userinfo.assignedResource);
-    if (!res.ok) {
-      throw new Error('something went wrong!');
-    }
-    window.alert('Project created sucessfully');
+    console.log('form submit data:', formData);
+    await addProject({
+      variables: {
+        title: formData.title,
+        description: formData.description,
+        allocation: formData.allocation,
+        requiredResNumber: formData.requiredResNumber,
+        assignedResources: formData.assignedResources,
+      },
+    });
+    // const submitData = {
+    //   ...formData,
+    //   assignedResource: userinfo.assignedResource,
+    // };
+    // console.log(submitData);
+    // const res = await createProject([userinfo.assignedResource, formData]);
+    // console.log('check my data', formData, userinfo.assignedResource);
+    // if (!res.ok) {
+    //   throw new Error('something went wrong!');
+    // }
+    // window.alert('Project created sucessfully');
     setFormData([]);
     setPersonName([]);
     setShow(false);
-    window.location.reload();
   };
 
   useEffect(() => {
