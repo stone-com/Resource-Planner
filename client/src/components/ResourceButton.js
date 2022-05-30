@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useQuery } from 'react';
 import { Button } from 'react-bootstrap';
 import { AiOutlinePlus } from 'react-icons/ai';
 import { Form, Modal, FloatingLabel } from 'react-bootstrap';
@@ -7,14 +7,17 @@ import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { DataContext } from '../contexts/DataContext';
 
+
 export default function ResourceModal() {
   // bring in setResources from context
-  const { resources, setResources } = useContext(DataContext);
+  const { resources, setResources, refresh, setRefresh } = useContext(DataContext);
   // bring in ADD_RESOURCE mutation
-  const [addResource, { data, loading, error }] = useMutation(ADD_RESOURCE);
+  const [addResource] = useMutation(ADD_RESOURCE);
+  
 
   const [show, setShow] = useState(false);
   const [formData, setFormData] = useState([]);
+
   let navigate = useNavigate();
 
   const handleClose = () => {
@@ -28,7 +31,7 @@ export default function ResourceModal() {
     setFormData({ ...formData, [name]: value });
   };
   // handle form submit
-  const sendData = async (e) => {
+  const useSendData = async (e) => {
     e.preventDefault();
     addResource({ variables: { personName: formData.personName } });
     console.log(formData);
@@ -40,7 +43,7 @@ export default function ResourceModal() {
         assignedProjects: [],
       },
     ]);
-
+    setRefresh(refresh + 1);
     setFormData([]);
     setShow(false);
     window.alert('Resource added successfully');
@@ -74,7 +77,7 @@ export default function ResourceModal() {
           <Button variant='secondary' onClick={handleClose}>
             Close
           </Button>
-          <Button variant='primary' onClick={sendData}>
+          <Button variant='primary' onClick={useSendData}>
             Save Resource Data{' '}
           </Button>
         </Modal.Footer>

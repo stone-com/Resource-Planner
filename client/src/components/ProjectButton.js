@@ -4,15 +4,27 @@ import { getResources, createProject } from '../utils/api';
 import { AiOutlinePlus } from 'react-icons/ai';
 import { ADD_PROJECT } from '../utils/mutations';
 import { DataContext } from '../contexts/DataContext';
-import { useMutation } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
+import { GETALL_RESOURCES } from '../utils/queries';
 
 export default function ProjectButton() {
   // bring in resoures and projects from context
   const { resources, setResources, projects, setProjects } =
     useContext(DataContext);
+    // show state used for modal
+    const [show, setShow] = useState(false);
   // bring in mutations
-  const [addProject, { data, loading, error }] = useMutation(ADD_PROJECT);
-  const [show, setShow] = useState(false);
+  const [addProject] = useMutation(ADD_PROJECT);
+  const { data } = useQuery(GETALL_RESOURCES);
+
+  useEffect(() => {
+    if (data && data.getAllResources) {
+      console.log('data', data)
+      setProjects(data.getAllResources);
+    }
+  }, [show, setResources]);
+
+ 
   const [personName, setPersonName] = useState([]);
   const [formData, setFormData] = useState([]);
 

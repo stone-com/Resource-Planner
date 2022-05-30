@@ -23,7 +23,7 @@ const columns = [
 
 export default function ResourceList() {
   // pull in resource state from context
-  const { resources } = useContext(DataContext);
+  const { resources} = useContext(DataContext);
   let rows = [];
   // loop through arra of resources, create object with values for resource, then push to rows array for datagrid
   for (let i = 0; i < resources.length; i++) {

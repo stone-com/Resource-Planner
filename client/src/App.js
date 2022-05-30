@@ -15,6 +15,7 @@ const App = () => {
   // set global states, going to be passed into context provider.
   const [projects, setProjects] = useState([]);
   const [resources, setResources] = useState([]);
+
   // query the projects and resources
   const { data: resourcesData } = useQuery(GETALL_RESOURCES);
   const { data: projectsData } = useQuery(GETALL_PROJECTS);
