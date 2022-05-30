@@ -1,9 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Modal, Button, FloatingLabel, Form } from 'react-bootstrap';
 import { getResources, createProject } from '../utils/api';
 import { AiOutlinePlus } from 'react-icons/ai';
+import { ADD_PROJECT } from '../utils/mutations';
+import { DataContext } from '../contexts/DataContext';
 
 export default function ProjectButton() {
+  // bring in resoures and projects from context
+  const { resources, setResources, projects, setProjects } =
+    useContext(DataContext);
   const [show, setShow] = useState(false);
   const [personName, setPersonName] = useState([]);
   const [formData, setFormData] = useState([]);
@@ -49,28 +54,24 @@ export default function ProjectButton() {
 
   const handleProjectData = async (e) => {
     e.preventDefault();
-    try {
-      console.log('check availaboy', formData);
-      const submitData = {
-        ...formData,
-        assignedResource: userinfo.assignedResource,
-      };
-      console.log(submitData);
-      const res = await createProject([userinfo.assignedResource, formData]);
-      console.log('check my data', formData, userinfo.assignedResource);
-      if (!res.ok) {
-        throw new Error('something went wrong!');
-      }
-      window.alert('Project created sucessfully');
-      setFormData([]);
-      setPersonName([]);
-      setShow(false);
-
-      const project = await res.json();
-      window.location.reload();
-    } catch (err) {
-      console.error(err);
+    console.log('check availaboy', formData);
+    const submitData = {
+      ...formData,
+      assignedResource: userinfo.assignedResource,
+    };
+    console.log(submitData);
+    const res = await createProject([userinfo.assignedResource, formData]);
+    console.log('check my data', formData, userinfo.assignedResource);
+    if (!res.ok) {
+      throw new Error('something went wrong!');
     }
+    window.alert('Project created sucessfully');
+    setFormData([]);
+    setPersonName([]);
+    setShow(false);
+
+    const project = await res.json();
+    window.location.reload();
   };
 
   useEffect(() => {

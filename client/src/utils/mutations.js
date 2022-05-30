@@ -31,3 +31,28 @@ export const ADD_RESOURCE = gql`
     }
   }
 `;
+
+export const ADD_PROJECT = gql`
+  mutation addProject(
+    $description: String!
+    $title: String!
+    $allocation: Int!
+    $requiredResNumber: Int!
+  ) {
+    addProject(
+      description: $description
+      title: $title
+      allocation: $allocation
+      requiredResNumber: $requiredResNumber
+    ) {
+      title
+      description
+      allocation
+      requiredResNumber
+      createdAt
+      assignedResources {
+        personName
+      }
+    }
+  }
+`;
