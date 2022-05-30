@@ -7,13 +7,16 @@ import ProjectButton from './ProjectButton';
 import SectionHeader from './SectionHeader';
 import Navbar from './Navbar';
 import ResourceButton from './ResourceButton';
-import { getCapacity, getTotalResources } from '../utils/cardfunctions';
+import {
+  getCapacity,
+  getTotalResources,
+  getHoursAvailable,
+} from '../utils/cardfunctions';
 import { DataContext } from '../contexts/DataContext';
 
 const Dashboard = () => {
   // bring in projects and resources context
   const { projects, resources } = useContext(DataContext);
-  console.log(getCapacity(resources));
   return (
     <>
       <Navbar />
@@ -37,7 +40,7 @@ const Dashboard = () => {
           </Grid>
           <Grid item xs={6} md={3}>
             <SummaryCard
-              number={12}
+              number={getHoursAvailable(projects, resources)}
               title={'Hours Available'}
               icon={'fa-hourglass'}
               color={'success'}
