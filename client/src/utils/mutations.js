@@ -34,16 +34,57 @@ export const ADD_RESOURCE = gql`
 `;
 
 export const ADD_PROJECT = gql`
-  mutation addProject($description: String!, $title: String!, $allocation: Int!, $requiredResNumber: Int!, $assignedResources: [ID]) {
-  addProject(description: $description, title: $title, allocation: $allocation, requiredResNumber: $requiredResNumber, assignedResources: $assignedResources) {
-    title
-    description
-    allocation
-    requiredResNumber
-    createdAt
-    assignedResources {
-      _id
+  mutation addProject(
+    $description: String!
+    $title: String!
+    $allocation: Int!
+    $requiredResNumber: Int!
+    $assignedResources: [ID]
+  ) {
+    addProject(
+      description: $description
+      title: $title
+      allocation: $allocation
+      requiredResNumber: $requiredResNumber
+      assignedResources: $assignedResources
+    ) {
+      title
+      description
+      allocation
+      requiredResNumber
+      createdAt
+      assignedResources {
+        _id
+      }
     }
   }
-}
+`;
+
+export const UPDATE_PROJECT = gql`
+  mutation updateProject(
+    $projectId: ID!
+    $description: String
+    $title: title
+    $completed: Boolean
+    $requiredResNumber: Int
+    $assignedResources: [ID]
+  ) {
+    updateProject(
+      projectId: $projectId
+      description: $description
+      title: $title
+      requiredResNumber: $requiredResNumber
+      completed: $complete
+      requiredResNumber: $requiredResNumber
+    ) {
+      _id
+      title
+      description
+      requiredResNumber
+      completed
+      assignedResources {
+        _id
+      }
+    }
+  }
 `;

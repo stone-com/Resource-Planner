@@ -3,12 +3,12 @@ import { Modal, Button, FloatingLabel, Form } from 'react-bootstrap';
 import { AiOutlinePlus } from 'react-icons/ai';
 import { ADD_PROJECT } from '../utils/mutations';
 import { DataContext } from '../contexts/DataContext';
-import { useMutation} from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import { GETALL_PROJECTS } from '../utils/queries';
 
-export default function ProjectButton() {
+export default function EditProjectButton() {
   // bring in resoures and projects from context
-  const { resources, setResources, projects, setProjects } =
+  const { resources, setResources, projects, setProjects, selectedProject } =
     useContext(DataContext);
   // show state used for modal
   const [show, setShow] = useState(false);
@@ -25,7 +25,6 @@ export default function ProjectButton() {
     setShow(false);
     setPersonName([]);
     setFormData([]);
-    // window.location.reload();
   };
   const handleShow = () => setShow(true);
   // when an input is changed, set the form data state to new data
@@ -80,7 +79,7 @@ export default function ProjectButton() {
 
   return (
     <>
-      <Button className='m-2' variant='success' onClick={handleShow}>
+      <Button variant='success' onClick={handleShow}>
         <AiOutlinePlus />
         Add new project
       </Button>
@@ -91,60 +90,62 @@ export default function ProjectButton() {
         </Modal.Header>
         <Modal.Body>
           <>
-
+            <FloatingLabel
+              controlId='floatingInput'
+              value='Add Project Name'
+              className='mb-3'
+            >
               <Form.Control
-                className='mb-3'
                 type='text'
                 name='title'
-                placeholder="Add Project Name"
                 onChange={handleInputChange}
               />
+            </FloatingLabel>
 
-
+            <FloatingLabel label='Add Description' className='mb-3'>
               <Form.Control
-                className='mb-3'
                 type='text'
                 name='description'
                 onChange={handleInputChange}
-                placeholder="Add Description"
               />
+            </FloatingLabel>
 
-
-
+            <FloatingLabel
+              controlId='floatingSelect'
+              label='allocation of resources per percentage  '
+              className='mb-3'
+            >
               <Form.Select
-                className='mb-3'
                 aria-label='Floating label select example'
                 name='allocation'
                 onChange={handleInputChange}
-                >
-                <option value=''>time allocation</option>
+              >
+                <option value=''></option>
+
                 <option value={25}>25%</option>
                 <option value={50}>50%</option>
                 <option value={75}>75%</option>
                 <option value={100}>100%</option>
               </Form.Select>
+            </FloatingLabel>
 
-
-           
+            <FloatingLabel label='Required Resources Number' className='mb-3'>
               <Form.Control
-               className='mb-3'
                 type='number'
                 min='1'
                 max='50'
                 name='requiredResNumber'
                 onChange={handleInputChange}
-                placeholder="resources required"
               />
+            </FloatingLabel>
 
-
-           
+            <FloatingLabel label='started Daye' className='mb-3'>
               <Form.Control
-                 className='mb-3'
                 type='date'
                 name='createdAt'
                 onChange={handleInputChange}
               />
-
+            </FloatingLabel>
           </>
 
           <fieldset

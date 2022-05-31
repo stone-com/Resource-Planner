@@ -36,23 +36,85 @@ const resolvers = {
   Mutation: {
     addProject: async (
       parent,
-      { requiredSkillsdescription, title, allocation, requiredResNumber }
+      { requiredSkillsdescription, title, allocation, requiredResNumber },
+      context
     ) => {
-      return await Project.create({
-        requiredSkillsdescription,
-        title,
-        allocation,
-        requiredResNumber,
-      });
+      if(context.user){
+        const project = await Project.create({
+          requiredSkillsdescription,
+          title,
+          allocation,
+          requiredResNumber,
+        });
+        project.assignedResources.map((id) => {
+          Resource.findOneAndUpdate(
+            { _id: id },
+            {
+              $addToSet: { assignedProjects: project._id },
+              $inc: { availability: -project.allocation },
+            },
+            { new: true, runValidators: true },
+            function (err, updated) {
+              if (err) throw new AuthenticationError(err.message);
+              // console.log('%s %s is a %s.', updated);
+            }
+          );
+        });
+      }
+      throw new AuthenticationError('not logged in');
     },
     updateProject: async (
       parent,
-      { projectId, completed, requiredResNumber }
+      { projectId,title, description, completed, requiredResNumber, assignedResources }
     ) => {
-      return await Project.findOneAndUpdate(
-        { _id: projectId },
-        { completed: completed, requiredResNumber: requiredResNumber }
-      );
+      // return await Project.findOneAndUpdate(
+      //   { _id: projectId },
+      //   { completed: completed, requiredResNumber: requiredResNumber }
+      // );
+      let project;
+      if (completed|| assignedResources) {
+          project = await Project.findOneAndUpdate(
+          {
+            _id: projectId,
+          },
+          {
+            title: title,
+            requiredResNumber: requiredResNumber,
+            description: description,
+            completed: completed,
+            $addToSet: {
+              assignedResources: assignedResources,
+            },
+          },
+          {
+            new: true,
+            runValidators: true,
+          }
+        );
+        
+      } else {
+          project = await Project.findOneAndUpdate(
+          {
+            _id: projectId,
+          },
+          {
+            title: title,
+            requiredResNumber: requiredResNumber,
+            description: description,
+            completed: completed,
+          },
+          {
+            new: true,
+            runValidators: true,
+          }
+        );
+      }
+        
+  
+        if (!project) {
+          throw new AuthenticationError('failed to update project')
+        }
+        return project;
     },
     // Resource Mutations
     addResource: async (parent, { personName }) => {

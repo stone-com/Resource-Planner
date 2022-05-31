@@ -13,8 +13,10 @@ export default function ResourceModal() {
   // bring in setResources from context
   const { resources, setResources } = useContext(DataContext);
   // bring in ADD_RESOURCE mutation
-  const [addResource] = useMutation(ADD_RESOURCE);
-  const [queryResources] = useLazyQuery(GETALL_RESOURCES);
+  const [addResource] = useMutation(ADD_RESOURCE, {
+    // refetch resources after using mutation
+    refetchQueries: [GETALL_RESOURCES, 'GetAllResources'],
+  });
 
   const [show, setShow] = useState(false);
   const [formData, setFormData] = useState([]);
