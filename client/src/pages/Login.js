@@ -32,6 +32,7 @@ const Login = (props) => {
       });
 
       Auth.login(data.login.token);
+      navigate('/dashboard')// navigate use react dom to dashboard
     } catch (e) {
       console.error(e);
     }
