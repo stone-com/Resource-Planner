@@ -30,7 +30,7 @@ class AuthService {
     login(idToken) {
     localStorage.setItem('id_token', idToken);
     // TODO when dashboard url/route is created update this field
-    window.location.assign('/dashboard');
+    // window.location.assign('/dashboard');
     }
 
     logout(e) {
