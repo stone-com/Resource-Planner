@@ -100,62 +100,59 @@ export default function ProjectButton() {
         </Modal.Header>
         <Modal.Body>
           <>
-            <FloatingLabel
-              controlId='floatingInput'
-              label='Add Project Name'
-              className='mb-3'
-            >
-              <Form.Control
+              <Form.Control 
+                className='mb-3'
                 type='text'
                 name='title'
+                placeholder="Add Project Name"
                 onChange={handleInputChange}
               />
-            </FloatingLabel>
 
-            <FloatingLabel label='Add Description' className='mb-3'>
+
               <Form.Control
+                className='mb-3'
                 type='text'
                 name='description'
                 onChange={handleInputChange}
+                placeholder="Add Description"
               />
-            </FloatingLabel>
 
-            <FloatingLabel
-              controlId='floatingSelect'
-              label='allocation of resources per percentage  '
-              className='mb-3'
-            >
+
+
               <Form.Select
+                className='mb-3'
                 aria-label='Floating label select example'
                 name='allocation'
                 onChange={handleInputChange}
-              >
-                <option value=''></option>
-
+                >
+                <option value=''>time allocation</option>
                 <option value={25}>25%</option>
                 <option value={50}>50%</option>
                 <option value={75}>75%</option>
                 <option value={100}>100%</option>
               </Form.Select>
-            </FloatingLabel>
 
-            <FloatingLabel label='Required Resources Number' className='mb-3'>
+
+           
               <Form.Control
+               className='mb-3'
                 type='number'
                 min='1'
                 max='50'
                 name='requiredResNumber'
                 onChange={handleInputChange}
+                placeholder="resources required"
               />
-            </FloatingLabel>
 
-            <FloatingLabel label='started Daye' className='mb-3'>
+
+           
               <Form.Control
+                 className='mb-3'
                 type='date'
                 name='createdAt'
                 onChange={handleInputChange}
               />
-            </FloatingLabel>
+
           </>
 
           <fieldset
