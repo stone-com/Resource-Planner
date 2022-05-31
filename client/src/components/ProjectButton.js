@@ -102,7 +102,7 @@ export default function ProjectButton() {
           <>
             <FloatingLabel
               controlId='floatingInput'
-              label='Add Project Name'
+              value='Add Project Name'
               className='mb-3'
             >
               <Form.Control
