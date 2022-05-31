@@ -42,16 +42,9 @@ export default function ProjectButton() {
   };
   // when an input is changed, set the form data state to new data
   const handleInputChange = async (event) => {
-    const { name, value } = event.target;
-    if (event.target.type === 'checkbox') {
-      if (event.target.checked) {
-        setProjectResources((projectResources) => [...projectResources, value]);
-        return;
-      }
-    }
-
-    setFormData({ ...formData, [name]: value });
-    console.log('formdata:', formData);
+    event.target.checked
+      ? setFormData({ completed: true })
+      : setFormData({ completed: false });
   };
   useEffect(() => {
     setFormData(
@@ -61,9 +54,9 @@ export default function ProjectButton() {
     console.log('formdata:', formData);
   }, [projectResources]);
   // set PersonName state to resources(from context) this will be filtered through to display in the form selection for assigned resources
-  useEffect(() => {
-    setPersonName(resources);
-  }, []);
+  //   useEffect(() => {
+  //     setPersonName(resources);
+  //   }, []);
 
   const handleChange2 = (e) => {
     const { value, checked } = e.target;
@@ -91,7 +84,7 @@ export default function ProjectButton() {
     // setProjectResources([]);
     // setFormData([]);
     // setPersonName([]);
-    setReady(true);
+    // setReady(true);
     setShow(false);
   };
 
@@ -111,13 +104,13 @@ export default function ProjectButton() {
     setFormData([]);
     setPersonName([]);
   }, [ready]);
+
   useEffect(() => {
     const filterResources = resources.filter(
       (newData) => newData.availability >= formData.allocation
     );
     setPersonName(filterResources);
-  }, [formData.allocation]);
-
+  }, [show]);
 
   return (
     <>
@@ -134,19 +127,20 @@ export default function ProjectButton() {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {/* {console.log(selectedProject[0])} */}
           <div>
             <p>Completed?</p>
-            <input type='checkbox' name='completed' value='false'></input>
+            <input
+              type='checkbox'
+              name='completed'
+              value='false'
+              onChange={handleInputChange}
+            ></input>
           </div>
           <div>
             <p>Currently Assigned Resources:</p>
             <div>
-            {selectedProject
-              ? `${selectedProject[0].assignedResources}`
-              : ''}
+              {selectedProject ? `${selectedProject[0].assignedResources}` : ''}
             </div>
-      
           </div>
           {/* <FloatingLabel label='Required Resources Number' className='mb-3'>
             <Form.Control
@@ -158,7 +152,7 @@ export default function ProjectButton() {
             />
           </FloatingLabel> */}
 
-          <fieldset
+          {/* <fieldset
             name='assignedResources'
             class='d-flex flex-column flex-wrap m-2'
             // onChange={handleInputChange}
@@ -179,14 +173,14 @@ export default function ProjectButton() {
                 </label>
               </div>
             ))}
-          </fieldset>
+          </fieldset> */}
         </Modal.Body>
         <Modal.Footer>
           <Button variant='secondary' onClick={handleClose}>
             Close
           </Button>
           <Button variant='primary' onClick={handleProjectData}>
-            Save your new project{' '}
+            Save and edit{' '}
           </Button>
         </Modal.Footer>
       </Modal>
