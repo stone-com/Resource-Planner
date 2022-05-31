@@ -6,6 +6,7 @@ import { useQuery } from '@apollo/client';
 import { GETALL_PROJECTS, GETALL_RESOURCES } from './utils/queries';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { DataContext } from './contexts/DataContext';
+import Auth from './utils/auth';
 
 //Pages from pages folder - login and signup
 import Login from './pages/Login.js';
@@ -41,9 +42,12 @@ const App = () => {
     >
       <Router>
         <Routes>
-          <Route path='/dashboard' element={<Dashboard />} />
-          <Route path='/' element={<Login />} />
+          {Auth.loggedIn() ? (
+            <Route path='/dashboard' element={<Dashboard />} />
+          ): null}
           <Route path='/signup' element={<Signup />} />
+          <Route exact path='/' element={<Login />} />
+          <Route path='*' element={<Login />} />
         </Routes>
       </Router>
     </DataContext.Provider>
