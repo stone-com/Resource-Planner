@@ -66,18 +66,6 @@ export default function ProjectButton() {
     });
 
     setProjects([...projects, formData]);
-    // const submitData = {
-    //   ...formData,
-    //   assignedResource: userinfo.assignedResource,
-    // };
-    // console.log(submitData);
-    // const res = await createProject([userinfo.assignedResource, formData]);
-    // console.log('check my data', formData, userinfo.assignedResource);
-    // if (!res.ok) {
-    //   throw new Error('something went wrong!');
-    // }
-    // window.alert('Project created sucessfully');
-
     setFormData([]);
     setPersonName([]);
     setShow(false);

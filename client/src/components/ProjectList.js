@@ -61,6 +61,7 @@ export default function ProjectList() {
       completed: false,
       assignedResources: project.assignedResources,
       createdAt: project.createdAt,
+      _id: project._id,
     });
   }
 
@@ -73,6 +74,10 @@ export default function ProjectList() {
         rowsPerPageOptions={[5]}
         checkboxSelection
         disableSelectionOnClick
+        onSelectionModelChange={(selection) => {
+          const selectedProject = rows.filter((row) => selection[0] === row.id);
+          console.log(selectedProject[0]);
+        }}
       />
     </div>
   );
