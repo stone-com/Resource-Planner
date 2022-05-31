@@ -24,3 +24,26 @@ export const ADD_USER = gql`
   }
 `;
 
+export const ADD_RESOURCE = gql`
+  mutation addResource($personName: String!) {
+    addResource(personName: $personName) {
+      _id
+      personName
+    }
+  }
+`;
+
+export const ADD_PROJECT = gql`
+  mutation addProject($description: String!, $title: String!, $allocation: Int!, $requiredResNumber: Int!, $assignedResources: [ID]) {
+  addProject(description: $description, title: $title, allocation: $allocation, requiredResNumber: $requiredResNumber, assignedResources: $assignedResources) {
+    title
+    description
+    allocation
+    requiredResNumber
+    createdAt
+    assignedResources {
+      _id
+    }
+  }
+}
+`;

@@ -1,57 +1,52 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './app.css';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Dashboard from './components/Dashboard';
 import { useQuery } from '@apollo/client';
 import { GETALL_PROJECTS, GETALL_RESOURCES } from './utils/queries';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { DataContext } from './contexts/DataContext';
 
 //Pages from pages folder - login and signup
 import Login from './pages/Login.js';
 import Signup from './pages/Signup.js';
 
 const App = () => {
-
-  //use state for login
-  // const {}
+  // set global states, going to be passed into context provider.
+  const [projects, setProjects] = useState([]);
+  const [resources, setResources] = useState([]);
 
   // query the projects and resources
   const { data: resourcesData } = useQuery(GETALL_RESOURCES);
   const { data: projectsData } = useQuery(GETALL_PROJECTS);
-  let resources = [];
-  let projects = [];
-  if (resourcesData && projectsData) {
-    // save the gql query (data.query return) to variable
-    resources = resourcesData.getAllResources;
-    projects = projectsData.getAllProjects;
-    console.log('resources:', resources);
-    console.log('projects:', projects);
-  }
 
+  useEffect(() => {
+    if (resourcesData && resourcesData.getAllResources) {
+      setResources(resourcesData.getAllResources);
+    }
+  }, [resourcesData, setResources]);
+
+  useEffect(() => {
+    if (projectsData && projectsData.getAllProjects) {
+      setProjects(projectsData.getAllProjects);
+    }
+  }, [projectsData, setProjects]);
+
+  console.log('res:', resources);
+  console.log('proj:', projects);
   return (
-    <>
-    <Router>
-          <Routes>
-            <Route
-              path='/dashboard'
-              element={<Dashboard resources={resources} projects={projects} />}
-            >
-              
-          
-            </Route>
-            
-            <Route 
-                  path="/" 
-                  element={<Login />}
-                />
-
-            <Route 
-                  path="/signup" 
-                  element={<Signup />}
-                />          
-            </Routes>
+    // context provider to provide state access to all children components
+    <DataContext.Provider
+      value={{ projects, setProjects, resources, setResources }}
+    >
+      <Router>
+        <Routes>
+          <Route path='/dashboard' element={<Dashboard />} />
+          <Route path='/' element={<Login />} />
+          <Route path='/signup' element={<Signup />} />
+        </Routes>
       </Router>
-    </>
+    </DataContext.Provider>
   );
 };
 

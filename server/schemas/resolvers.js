@@ -6,14 +6,14 @@ const resolvers = {
   Query: {
     //project queries
     getAllProjects: async () => {
-      return Project.find({});
+      return Project.find({}).lean();
     },
     getSingleProject: async (parent, { projectId }) => {
       return Project.findById(projectId);
     },
     // resource queries
     getAllResources: async () => {
-      return Resource.find({});
+      return Resource.find({}).lean();
     },
     getSingleResource: async (parent, { projectId }) => {
       return Resource.findById(projectId);

@@ -5,6 +5,7 @@ const typeDefs = gql`
   scalar Date
 
   type Project {
+    _id: ID
     title: String
     description: String
     requiredSkills: String
@@ -15,6 +16,7 @@ const typeDefs = gql`
     assignedResources: [Resource]
   }
   type Resource {
+    _id: ID
     personName: String
     availability: Int
     assignedProjects: [Project]
@@ -53,6 +55,7 @@ const typeDefs = gql`
       title: String!
       allocation: Int!
       requiredResNumber: Int!
+      assignedResources: [ID]
     ): Project
     updateProject(
       projectId: ID!

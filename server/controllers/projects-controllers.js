@@ -2,7 +2,7 @@ const { Project, Resource } = require('../models');
 
 module.exports = {
   async createProject(req, res) {
-    console.log(req.body);
+    console.log('body!!', req.body);
     const project = await Project.create({
       title: req.body[1].title,
       description: req.body[1].description,
