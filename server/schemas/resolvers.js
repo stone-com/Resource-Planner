@@ -65,22 +65,25 @@ const resolvers = {
     },
     updateProject: async (
       parent,
-      { projectId, completed, requiredResNumber }
+      { projectId,title, description, completed, requiredResNumber, assignedResources }
     ) => {
       // return await Project.findOneAndUpdate(
       //   { _id: projectId },
       //   { completed: completed, requiredResNumber: requiredResNumber }
       // );
       let project;
-      if (completed|| requiredResNumber) {
+      if (completed|| assignedResources) {
           project = await Project.findOneAndUpdate(
           {
             _id: projectId,
           },
           {
+            title: title,
+            requiredResNumber: requiredResNumber,
+            description: description,
             completed: completed,
             $addToSet: {
-              assignedResources: requiredResNumber,
+              assignedResources: assignedResources,
             },
           },
           {
@@ -95,6 +98,9 @@ const resolvers = {
             _id: projectId,
           },
           {
+            title: title,
+            requiredResNumber: requiredResNumber,
+            description: description,
             completed: completed,
           },
           {

@@ -47,3 +47,18 @@ export const ADD_PROJECT = gql`
   }
 }
 `;
+
+export const UPDATE_PROJECT =gql`
+  mutation updateProject($projectId: ID!, $description: String, $title: title, $completed: Boolean,$requiredResNumber: Int, $assignedResources: [ID])
+  updateProject(projectId: $projectId, description: $description, title: $title, requiredResNumber: $requiredResNumber, completed: $complete, requiredResNumber: $requiredResNumber){
+    _id
+    title
+    description
+    requiredResNumber
+    completed
+    assignedResources {
+      _id
+    }
+  }
+
+`
