@@ -30,7 +30,8 @@
 }
 
 .card-counter.info {
-  background-color: #26c6da;
+  /* background-color: #26c6da; */
+  background-color: #8d942b;
   color: #fff;
 }
 
@@ -62,3 +63,10 @@
 #add-new-project-btn {
   background-color: #3a1987;
 }
+
+body{
+  background: rgb(229,232,182);
+  background: linear-gradient(0deg, rgba(229,232,182,0.9199790206609988) 31%, rgba(217,235,212,0.8578875173930249) 40%);
+
+}
+
