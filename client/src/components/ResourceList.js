@@ -3,16 +3,20 @@ import { DataGrid } from '@mui/x-data-grid';
 import { DataContext } from '../contexts/DataContext';
 
 const columns = [
-  { field: 'id', headerName: 'ID', width: 80 },
   {
     field: 'name',
     headerName: 'Name',
-    width: 150,
+    width: 100,
+  },
+  {
+    field: 'availability',
+    headerName: 'Availability',
+    width: 100,
   },
   {
     field: 'assignedProjects',
     headerName: 'Assigned Projects',
-    width: 150,
+    flex: 1,
   },
 ];
 
@@ -23,10 +27,11 @@ export default function ResourceList() {
   // loop through arra of resources, create object with values for resource, then push to rows array for datagrid
   for (let i = 0; i < resources.length; i++) {
     let resource = resources[i];
-    // create array to store assigned project titles 
+    // create array to store assigned project titles
     let resourceAssignedProjects = resource.assignedProjects.map((project) => {
-      return project.title
-    } )
+      return project.title;
+    });
+    console.log('resassproj:',resourceAssignedProjects)
 
     rows.push({
       id: i,

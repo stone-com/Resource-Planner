@@ -34,6 +34,7 @@ const App = () => {
       setProjects(projectsData.getAllProjects);
     }
   }, [projectsData, setProjects]);
+  console.log(projectsData);
 
   console.log('res:', resources);
   console.log('proj:', projects);

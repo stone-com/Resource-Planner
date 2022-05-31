@@ -11,29 +11,56 @@ export default function ProjectButton() {
   const { resources, setResources, projects, setProjects } =
     useContext(DataContext);
   // show state used for modal
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState();
   // bring in mutations
   const [addProject] = useMutation(ADD_PROJECT, {
-    refetchQueries: [GETALL_PROJECTS, 'GetAllProjects', GETALL_RESOURCES, 'GetAllResources'],
+    refetchQueries: [
+      GETALL_PROJECTS,
+      'GetAllProjects',
+      GETALL_RESOURCES,
+      'GetAllResources',
+    ],
   });
 
   const [personName, setPersonName] = useState([]);
-  const [formData, setFormData] = useState([]);
+  const [formData, setFormData] = useState({});
   const [projectResources, setProjectResources] = useState([]);
+  const [ready, setReady] = useState(false);
 
   const handleClose = () => {
     setShow(false);
     setPersonName([]);
-    setFormData([]);
+    setFormData({});
+    setProjectResources([]);
     // window.location.reload();
   };
   const handleShow = () => setShow(true);
   // when an input is changed, set the form data state to new data
-  const handleInputChange = (event) => {
+  const handleInputChange = async (event) => {
     const { name, value } = event.target;
-    setFormData({ ...formData, [name]: value });
-  };
+    if (event.target.type === 'checkbox') {
+      if (event.target.checked) {
+        setProjectResources((projectResources) => [...projectResources, value]);
+        // console.log('PR', projectResources);
+        // setFormData(
+        //   (formdata) =>
+        //     (formdata = { ...formData, assignedResources: projectResources })
+        // );
+        // console.log('formdata:', formData);
+        return;
+      }
+    }
 
+    setFormData({ ...formData, [name]: value });
+    console.log('formdata:', formData);
+  };
+  useEffect(() => {
+    setFormData(
+      (formdata) =>
+        (formdata = { ...formData, assignedResources: projectResources })
+    );
+    console.log('formdata:', formData);
+  }, [projectResources]);
   // set PersonName state to resources(from context) this will be filtered through to display in the form selection for assigned resources
   useEffect(() => {
     setPersonName(resources);
@@ -42,25 +69,35 @@ export default function ProjectButton() {
   const handleChange2 = (e) => {
     const { value, checked } = e.target;
     if (checked) {
-      if (projectResources.includes(value)) {
-        return;
-      }
+      // if (projectResources.includes(value)) {
+      //   return;
+      // }
       setProjectResources((projectResources) => [...projectResources, value]);
       setFormData(
         (formdata) =>
           (formdata = { ...formData, assignedResources: projectResources })
       );
-      console.log(typeof e.target.value);
       console.log('formdata:', formData);
     }
+    console.log(e.target.type);
   };
 
   const handleProjectData = async (e) => {
     e.preventDefault();
 
     console.log('form submit data:', formData);
-    setProjectResources([]);
+    setProjects([...projects, formData]);
 
+    // setProjects([...projects, formData]);
+    // setProjectResources([]);
+    // setFormData([]);
+    // setPersonName([]);
+    setReady(true);
+    setShow(false);
+  };
+
+  useEffect(() => {
+    console.log(formData);
     addProject({
       variables: {
         title: formData.title,
@@ -70,13 +107,7 @@ export default function ProjectButton() {
         assignedResources: formData.assignedResources,
       },
     });
-
-    setProjects([...projects, formData]);
-    setFormData([]);
-    setPersonName([]);
-    setShow(false);
-  };
-
+  }, [ready]);
   useEffect(() => {
     const filterResources = resources.filter(
       (newData) => newData.availability >= formData.allocation
@@ -158,7 +189,7 @@ export default function ProjectButton() {
           <fieldset
             name='assignedResources'
             class='d-flex flex-column flex-wrap m-2'
-            onChange={handleChange2}
+            // onChange={handleInputChange}
           >
             <legend>Choose Assigned Resources Names:</legend>
 
@@ -167,7 +198,7 @@ export default function ProjectButton() {
                 <input
                   type='checkbox'
                   value={name._id}
-                  onClick={handleChange2}
+                  onChange={handleInputChange}
                   // onClick={(e) => console.log(e)}
                 />
                 <label>
