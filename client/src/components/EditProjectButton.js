@@ -3,12 +3,12 @@ import { Modal, Button, FloatingLabel, Form } from 'react-bootstrap';
 import { AiOutlinePlus } from 'react-icons/ai';
 import { ADD_PROJECT } from '../utils/mutations';
 import { DataContext } from '../contexts/DataContext';
-import { useMutation} from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import { GETALL_PROJECTS } from '../utils/queries';
 
-export default function ProjectButton() {
+export default function EditProjectButton() {
   // bring in resoures and projects from context
-  const { resources, setResources, projects, setProjects } =
+  const { resources, setResources, projects, setProjects, selectedProject } =
     useContext(DataContext);
   // show state used for modal
   const [show, setShow] = useState(false);
@@ -25,7 +25,6 @@ export default function ProjectButton() {
     setShow(false);
     setPersonName([]);
     setFormData([]);
-    // window.location.reload();
   };
   const handleShow = () => setShow(true);
   // when an input is changed, set the form data state to new data
