@@ -44,6 +44,7 @@ export default function ProjectButton() {
       }
       setProjectResources((projectResources) => [...projectResources, value]);
     }
+    console.log(e.target);
   };
 
   const handleProjectData = async (e) => {
