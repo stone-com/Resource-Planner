@@ -89,7 +89,7 @@ export default function ProjectButton() {
 
   return (
     <>
-      <Button variant='success' onClick={handleShow}>
+      <Button className='m-2' variant='success' onClick={handleShow}>
         <AiOutlinePlus />
         Add new project
       </Button>
