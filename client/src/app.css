@@ -41,7 +41,8 @@
 
 .card-counter .count-numbers {
   position: absolute;
-  right: 35px;
+  /* right: 35px; */
+  right: 55px;
   top: 20px;
   font-size: 32px;
   display: block;
@@ -58,3 +59,6 @@
   font-size: 18px;
 }
 
+#add-new-project-btn {
+  background-color: #3a1987;
+}

@@ -4,6 +4,7 @@ import { AiOutlinePlus } from 'react-icons/ai';
 import { ADD_PROJECT } from '../utils/mutations';
 import { DataContext } from '../contexts/DataContext';
 import { useMutation, useQuery } from '@apollo/client';
+import './app.css';
 
 export default function EditProjectButton({id}) { // target progect id 
   // bring in resoures and projects from context
@@ -89,10 +90,11 @@ export default function EditProjectButton({id}) { // target progect id
 
   return (
     <>
-      <Button variant='success' onClick={handleShow}>
+      <Button  variant='success' onClick={handleShow}>
         <AiOutlinePlus />
-        Add new project
+        Add new project 
       </Button>
+      
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
