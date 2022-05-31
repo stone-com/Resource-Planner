@@ -37,6 +37,7 @@ const Signup = () => {
       });
 
       Auth.login(data.addUser.token);
+      navigate('/dashboard')// use react router DOM to route component 
     } catch (e) {
       console.error(e);
     }

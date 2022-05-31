@@ -6,6 +6,7 @@ const expiration = '2h'
 
 module.exports = {
     authMiddleware: function ({req}){
+        console.log('Server Middleware here!')
         //set the token from the body/query/headers
         let token = req.body.token || req.query.token || req.headers.authorization;
 
@@ -30,6 +31,7 @@ module.exports = {
 
     signToken: function ({ email, userName, _id }) {
     const payload = { email, userName, _id };
+    console.log('sign token');
     return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
     },
 };

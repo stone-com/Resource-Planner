@@ -16,7 +16,6 @@ const server = new ApolloServer({
   csrfPrevention: true,
   context: authMiddleware,
 });
-
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
@@ -33,6 +32,7 @@ app.use(cors());
 // Create a new instance of an Apollo server with the GraphQL schema
 const startApolloServer = async (typeDefs, resolvers) => {
   await server.start();
+  
   server.applyMiddleware({ app });
 
   db.once('open', () => {

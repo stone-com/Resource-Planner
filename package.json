@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "description": "test",
   "main": "index.js",
-  "proxy": "http://localhost:3001/graphql",
+  
   "scripts": {
     "server": "json-server --watch db.json --port 4000 --middlewares ./range",
     "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "dev": "concurrently \"cd server && npm run start\" \"cd client && npm start\"",
     "build": "cd client && npm run build",
     "start": "cd server && node server",
     "install": "cd server && npm i && cd ../client && npm i"
