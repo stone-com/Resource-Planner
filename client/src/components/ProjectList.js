@@ -47,7 +47,7 @@ const columns = [
 ];
 
 export default function ProjectList() {
-  const { projects } = useContext(DataContext);
+  const { projects, setSelectedProject } = useContext(DataContext);
   let rows = [];
   for (let i = 0; i < projects.length; i++) {
     let project = projects[i];
@@ -74,9 +74,10 @@ export default function ProjectList() {
         rowsPerPageOptions={[5]}
         checkboxSelection
         disableSelectionOnClick
-        onSelectionModelChange={(selection) => {
-          const selectedProject = rows.filter((row) => selection[0] === row.id);
-          console.log(selectedProject[0]);
+        onSelectionModelChange={(checked) => {
+          const selection = rows.filter((row) => checked[0] === row.id);
+          console.log(selection[0]);
+          setSelectedProject(selection);
         }}
       />
     </div>

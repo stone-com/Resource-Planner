@@ -16,6 +16,8 @@ const App = () => {
   // set global states, going to be passed into context provider.
   const [projects, setProjects] = useState([]);
   const [resources, setResources] = useState([]);
+  // set selected project resource, for taking ID value from selected checkbox in projectlist and using it in edit project mutation
+  const [selectedProject, setSelectedProject] = useState([]);
 
   // query the projects and resources
   const { data: resourcesData } = useQuery(GETALL_RESOURCES);
@@ -38,13 +40,20 @@ const App = () => {
   return (
     // context provider to provide state access to all children components
     <DataContext.Provider
-      value={{ projects, setProjects, resources, setResources }}
+      value={{
+        projects,
+        setProjects,
+        resources,
+        setResources,
+        selectedProject,
+        setSelectedProject,
+      }}
     >
       <Router>
         <Routes>
           {Auth.loggedIn() ? (
             <Route path='/dashboard' element={<Dashboard />} />
-          ): null}
+          ) : null}
           <Route path='/signup' element={<Signup />} />
           <Route exact path='/' element={<Login />} />
           <Route path='*' element={<Login />} />
