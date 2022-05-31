@@ -16,6 +16,7 @@ export default function SectionHeader({title, addButton, editButton}) {
           <Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
            {title}
           </Typography>
+          {editButton}
           {addButton}
         </Toolbar>
       </AppBar>
