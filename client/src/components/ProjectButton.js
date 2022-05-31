@@ -107,6 +107,10 @@ export default function ProjectButton() {
         assignedResources: formData.assignedResources,
       },
     });
+
+    setProjectResources([]);
+    setFormData([]);
+    setPersonName([]);
   }, [ready]);
   useEffect(() => {
     const filterResources = resources.filter(
