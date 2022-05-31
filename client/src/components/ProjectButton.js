@@ -3,7 +3,7 @@ import { Modal, Button, FloatingLabel, Form } from 'react-bootstrap';
 import { AiOutlinePlus } from 'react-icons/ai';
 import { ADD_PROJECT } from '../utils/mutations';
 import { DataContext } from '../contexts/DataContext';
-import { useMutation} from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import { GETALL_PROJECTS } from '../utils/queries';
 
 export default function ProjectButton() {
@@ -46,12 +46,18 @@ export default function ProjectButton() {
         return;
       }
       setProjectResources((projectResources) => [...projectResources, value]);
+      setFormData(
+        (formdata) =>
+          (formdata = { ...formData, assignedResources: projectResources })
+      );
+      console.log(typeof e.target.value);
+      console.log('formdata:', formData);
     }
   };
 
   const handleProjectData = async (e) => {
     e.preventDefault();
-    await setFormData({ ...formData, assignedResources: projectResources });
+
     console.log('form submit data:', formData);
     setProjectResources([]);
 

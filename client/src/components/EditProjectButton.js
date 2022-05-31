@@ -1,19 +1,20 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { Modal, Button, FloatingLabel, Form } from 'react-bootstrap';
 import { AiOutlinePlus } from 'react-icons/ai';
-import { ADD_PROJECT } from '../utils/mutations';
+import { UPDATE_PROJECT } from '../utils/mutations';
 import { DataContext } from '../contexts/DataContext';
 import { useMutation } from '@apollo/client';
 import { GETALL_PROJECTS } from '../utils/queries';
 
 export default function EditProjectButton() {
   // bring in resoures and projects from context
-  const { resources, setResources, projects, setProjects, selectedProject } =
+  const { resources, projects, setProjects, selectedProject } =
     useContext(DataContext);
   // show state used for modal
   const [show, setShow] = useState(false);
   // bring in mutations
-  const [addProject] = useMutation(ADD_PROJECT, {
+  const [addProject] = useMutation(UPDATE_PROJECT, {
+    //   refetch all projects after updating
     refetchQueries: [GETALL_PROJECTS, 'GetAllProjects'],
   });
 
