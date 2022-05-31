@@ -3,7 +3,7 @@ import { Modal, Button, FloatingLabel, Form } from 'react-bootstrap';
 import { AiOutlinePlus } from 'react-icons/ai';
 import { ADD_PROJECT } from '../utils/mutations';
 import { DataContext } from '../contexts/DataContext';
-import { useMutation, useQuery } from '@apollo/client';
+import { useMutation} from '@apollo/client';
 import { GETALL_PROJECTS } from '../utils/queries';
 
 export default function ProjectButton() {
