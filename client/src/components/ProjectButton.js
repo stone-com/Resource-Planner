@@ -4,6 +4,7 @@ import { AiOutlinePlus } from 'react-icons/ai';
 import { ADD_PROJECT } from '../utils/mutations';
 import { DataContext } from '../contexts/DataContext';
 import { useMutation, useQuery } from '@apollo/client';
+import { GETALL_PROJECTS } from '../utils/queries';
 
 export default function ProjectButton() {
   // bring in resoures and projects from context
@@ -12,7 +13,9 @@ export default function ProjectButton() {
   // show state used for modal
   const [show, setShow] = useState(false);
   // bring in mutations
-  const [addProject] = useMutation(ADD_PROJECT);
+  const [addProject] = useMutation(ADD_PROJECT, {
+    refetchQueries: [GETALL_PROJECTS, 'GetAllProjects'],
+  });
 
   const [personName, setPersonName] = useState([]);
   const [formData, setFormData] = useState([]);

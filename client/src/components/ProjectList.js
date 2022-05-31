@@ -60,6 +60,7 @@ export default function ProjectList() {
       requiredResources: project.requiredResNumber,
       completed: false,
       assignedResources: project.assignedResources,
+      createdAt: project.createdAt,
     });
   }
 
