@@ -60,14 +60,18 @@ const typeDefs = gql`
     updateProject(
       projectId: ID!
       completed: Boolean!
+      description: String!
+      title: String!
+      allocation: Int!
       requiredResNumber: Int!
+      assignedResources: [ID]
+      
     ): Project
     addResource(personName: String!): Resource
     addUser(
       userName: String!
       email: String!
       password: String!
-
     ): Auth
     login(email: String!, password: String!): Auth
   }
