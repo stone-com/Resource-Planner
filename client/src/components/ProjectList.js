@@ -51,7 +51,12 @@ export default function ProjectList() {
   let rows = [];
   for (let i = 0; i < projects.length; i++) {
     let project = projects[i];
-    // console.log('project rray 1', project);
+    console.log(project.assignedResources)
+     // create array to store assigned resource names
+     let projectAssignedResources = project.assignedResources.map((resource) => {
+      return resource.personName;
+    });
+    console.log(projectAssignedResources)
     rows.push({
       id: i,
       projectName: project.title,
@@ -59,10 +64,10 @@ export default function ProjectList() {
       allocation: project.allocation,
       requiredResources: project.requiredResNumber,
       completed: false,
-      assignedResources: project.assignedResources,
+      assignedResources: projectAssignedResources,
       createdAt: project.createdAt,
       _id: project._id,
-    });
+    })
   }
 
   return (
@@ -75,6 +80,9 @@ export default function ProjectList() {
         checkboxSelection
         disableSelectionOnClick
         onSelectionModelChange={(checked) => {
+          if(!checked[0]) {
+            setSelectedProject(null);
+          }
           const selection = rows.filter((row) => checked[0] === row.id);
           console.log(selection[0]);
           setSelectedProject(selection);

@@ -4,6 +4,7 @@ import SummaryCard from './SummaryCard';
 import ResourceList from './ResourceList';
 import ProjectList from './ProjectList';
 import ProjectButton from './ProjectButton';
+import EditProjectButton from './EditProjectButton';
 import SectionHeader from './SectionHeader';
 import Navbar from './Navbar';
 import ResourceButton from './ResourceButton';
@@ -57,7 +58,7 @@ const Dashboard = () => {
             />
           </Grid>
           <Grid item xs={12}>
-            <SectionHeader title={'Projects'} addButton={<ProjectButton />} />
+            <SectionHeader title={'Projects'} editButton={<EditProjectButton />} addButton={<ProjectButton />} />
           </Grid>
           <Grid item xs={12}>
             <ProjectList />

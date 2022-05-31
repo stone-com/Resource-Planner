@@ -52,7 +52,9 @@ export default function ResourceModal() {
 
   return (
     <div>
+
       <Button className='m-2' id='add-new-project-btn' variant='success' onClick={() => setShow(true)}>
+
         <AiOutlinePlus />
         Add new resource
       </Button>
