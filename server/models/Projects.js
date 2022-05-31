@@ -10,7 +10,7 @@ const projectSchema = new Schema({
   },
   allocation: {
     type: Number,
-    default:0
+    default: 0,
   },
 
   requiredResNumber: {
@@ -27,7 +27,7 @@ const projectSchema = new Schema({
   assignedResources: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'Resources',
+      ref: 'Resource',
     },
   ],
 });

@@ -6,15 +6,12 @@ const resolvers = {
   Query: {
     //project queries
     getAllProjects: async () => {
-      return Project.find({}).lean();
+      return await Project.find({}).populate('assignedResources');
     },
     getSingleProject: async (parent, { projectId }) => {
       return Project.findById(projectId);
     },
     // resource queries
-    getAllResources: async () => {
-      return Resource.find({}).lean();
-    },
     getSingleResource: async (parent, { projectId }) => {
       return Resource.findById(projectId);
     },
@@ -36,15 +33,16 @@ const resolvers = {
   Mutation: {
     addProject: async (
       parent,
-      { requiredSkillsdescription, title, allocation, requiredResNumber },
+      { description, title, allocation, requiredResNumber, assignedResources },
       context
     ) => {
-      if(context.user){
+      if (context.user) {
         const project = await Project.create({
-          requiredSkillsdescription,
+          description,
           title,
           allocation,
           requiredResNumber,
+          assignedResources,
         });
         project.assignedResources.map((id) => {
           Resource.findOneAndUpdate(
@@ -65,15 +63,22 @@ const resolvers = {
     },
     updateProject: async (
       parent,
-      { projectId,title, description, completed, requiredResNumber, assignedResources }
+      {
+        projectId,
+        title,
+        description,
+        completed,
+        requiredResNumber,
+        assignedResources,
+      }
     ) => {
       // return await Project.findOneAndUpdate(
       //   { _id: projectId },
       //   { completed: completed, requiredResNumber: requiredResNumber }
       // );
       let project;
-      if (completed|| assignedResources) {
-          project = await Project.findOneAndUpdate(
+      if (completed || assignedResources) {
+        project = await Project.findOneAndUpdate(
           {
             _id: projectId,
           },
@@ -91,9 +96,8 @@ const resolvers = {
             runValidators: true,
           }
         );
-        
       } else {
-          project = await Project.findOneAndUpdate(
+        project = await Project.findOneAndUpdate(
           {
             _id: projectId,
           },
@@ -109,12 +113,11 @@ const resolvers = {
           }
         );
       }
-        
-  
-        if (!project) {
-          throw new AuthenticationError('failed to update project')
-        }
-        return project;
+
+      if (!project) {
+        throw new AuthenticationError('failed to update project');
+      }
+      return project;
     },
     // Resource Mutations
     addResource: async (parent, { personName }) => {
