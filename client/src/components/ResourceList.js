@@ -31,7 +31,6 @@ export default function ResourceList() {
     let resourceAssignedProjects = resource.assignedProjects.map((project) => {
       return project.title;
     });
-    console.log('resassproj:',resourceAssignedProjects)
 
     rows.push({
       id: i,

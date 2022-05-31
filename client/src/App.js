@@ -17,7 +17,7 @@ const App = () => {
   const [projects, setProjects] = useState([]);
   const [resources, setResources] = useState([]);
   // set selected project resource, for taking ID value from selected checkbox in projectlist and using it in edit project mutation
-  const [selectedProject, setSelectedProject] = useState([]);
+  const [selectedProject, setSelectedProject] = useState();
 
   // query the projects and resources
   const { data: resourcesData } = useQuery(GETALL_RESOURCES);

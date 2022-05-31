@@ -13,7 +13,7 @@ export default function ProjectButton() {
   // show state used for modal
   const [show, setShow] = useState();
   // bring in mutations
-   // bring in mutations
+  // bring in mutations
   const [addProject] = useMutation(UPDATE_PROJECT, {
     //   refetch all projects after updating
     refetchQueries: [
@@ -36,7 +36,10 @@ export default function ProjectButton() {
     setProjectResources([]);
     // window.location.reload();
   };
-  const handleShow = () => setShow(true);
+  const handleShow = () => {
+    setShow(true);
+    console.log(selectedProject);
+  };
   // when an input is changed, set the form data state to new data
   const handleInputChange = async (event) => {
     const { name, value } = event.target;
@@ -115,6 +118,7 @@ export default function ProjectButton() {
     setPersonName(filterResources);
   }, [formData.allocation]);
 
+
   return (
     <>
       <Button variant='success' onClick={handleShow} className='m-2'>
@@ -123,67 +127,36 @@ export default function ProjectButton() {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Add New Project</Modal.Title>
+          <Modal.Title>
+            {selectedProject
+              ? `Edit ${selectedProject[0].projectName}`
+              : 'Edit Project'}
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <>
-            <FloatingLabel
-              controlId='floatingInput'
-              value='Add Project Name'
-              className='mb-3'
-            >
-              <Form.Control
-                type='text'
-                name='title'
-                onChange={handleInputChange}
-              />
-            </FloatingLabel>
-
-            <FloatingLabel label='Add Description' className='mb-3'>
-              <Form.Control
-                type='text'
-                name='description'
-                onChange={handleInputChange}
-              />
-            </FloatingLabel>
-
-            <FloatingLabel
-              controlId='floatingSelect'
-              label='allocation of resources per percentage  '
-              className='mb-3'
-            >
-              <Form.Select
-                aria-label='Floating label select example'
-                name='allocation'
-                onChange={handleInputChange}
-              >
-                <option value=''></option>
-
-                <option value={25}>25%</option>
-                <option value={50}>50%</option>
-                <option value={75}>75%</option>
-                <option value={100}>100%</option>
-              </Form.Select>
-            </FloatingLabel>
-
-            <FloatingLabel label='Required Resources Number' className='mb-3'>
-              <Form.Control
-                type='number'
-                min='1'
-                max='50'
-                name='requiredResNumber'
-                onChange={handleInputChange}
-              />
-            </FloatingLabel>
-
-            <FloatingLabel label='started Daye' className='mb-3'>
-              <Form.Control
-                type='date'
-                name='createdAt'
-                onChange={handleInputChange}
-              />
-            </FloatingLabel>
-          </>
+          {/* {console.log(selectedProject[0])} */}
+          <div>
+            <p>Completed?</p>
+            <input type='checkbox' name='completed' value='false'></input>
+          </div>
+          <div>
+            <p>Currently Assigned Resources:</p>
+            <div>
+            {selectedProject
+              ? `${selectedProject[0].assignedResources}`
+              : ''}
+            </div>
+      
+          </div>
+          {/* <FloatingLabel label='Required Resources Number' className='mb-3'>
+            <Form.Control
+              type='number'
+              min='1'
+              max='50'
+              name='requiredResNumber'
+              onChange={handleInputChange}
+            />
+          </FloatingLabel> */}
 
           <fieldset
             name='assignedResources'

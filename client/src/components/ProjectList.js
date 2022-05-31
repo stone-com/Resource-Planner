@@ -80,8 +80,9 @@ export default function ProjectList() {
         checkboxSelection
         disableSelectionOnClick
         onSelectionModelChange={(checked) => {
-          // get the row that matches the ID and  set it to selectedproject state
-          //will be used for getting the ID to pass into edit project
+          if(!checked[0]) {
+            setSelectedProject(null);
+          }
           const selection = rows.filter((row) => checked[0] === row.id);
           console.log(selection[0]);
           setSelectedProject(selection);
