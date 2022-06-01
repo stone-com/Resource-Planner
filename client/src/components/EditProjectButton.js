@@ -14,7 +14,7 @@ export default function ProjectButton() {
   const [show, setShow] = useState();
   // bring in mutations
   // bring in mutations
-  const [addProject] = useMutation(UPDATE_PROJECT, {
+  const [updateProject] = useMutation(UPDATE_PROJECT, {
     //   refetch all projects after updating
     refetchQueries: [
       GETALL_PROJECTS,
@@ -84,26 +84,23 @@ export default function ProjectButton() {
     // setProjectResources([]);
     // setFormData([]);
     // setPersonName([]);
-    // setReady(true);
+    setReady(true);
     setShow(false);
   };
 
-  useEffect(() => {
-    console.log(formData);
-    addProject({
-      variables: {
-        title: formData.title,
-        description: formData.description,
-        allocation: parseInt(formData.allocation, 10),
-        requiredResNumber: parseInt(formData.requiredResNumber, 10),
-        assignedResources: formData.assignedResources,
-      },
-    });
+//   useEffect(() => {
+//     console.log(formData);
+//     updateProject({
+//       variables: {
+//         projectId: selectedProject._id,
+//         completed: true
+//       },
+//     });
 
-    setProjectResources([]);
-    setFormData([]);
-    setPersonName([]);
-  }, [ready]);
+//     setProjectResources([]);
+//     setFormData([]);
+//     setPersonName([]);
+//   }, [ready]);
 
   useEffect(() => {
     const filterResources = resources.filter(
@@ -114,7 +111,7 @@ export default function ProjectButton() {
 
   return (
     <>
-      <Button variant='success' onClick={handleShow} className='m-2'>
+      <Button id='add-new-project-btn' variant='success' onClick={handleShow} className='m-2'>
         Edit Project
       </Button>
 

@@ -8,7 +8,6 @@ import { DataContext } from '../contexts/DataContext';
 import { useLazyQuery } from '@apollo/client';
 import { GETALL_RESOURCES } from '../utils/queries';
 
-
 export default function ResourceModal() {
   // bring in setResources from context
   const { resources, setResources } = useContext(DataContext);
@@ -47,14 +46,16 @@ export default function ResourceModal() {
 
     setFormData([]);
     setShow(false);
-    window.alert('Resource added successfully');
   };
 
   return (
     <div>
-
-      <Button className='m-2' id='add-new-project-btn' variant='success' onClick={() => setShow(true)}>
-
+      <Button
+        className='m-2'
+        id='add-new-project-btn'
+        variant='success'
+        onClick={() => setShow(true)}
+      >
         <AiOutlinePlus />
         Add new resource
       </Button>
