@@ -37,7 +37,7 @@ No Installation required. Follow the Heroku link and start using.
 
 
 ## Team members:
-![T02N0MGLH71-U02Q9DD70P3-f57b260dfa11-72](https://user-images.githubusercontent.com/33117688/161895924-13b217be-acd9-416f-8553-b2c0ee77546f.jpg)![T02N0MGLH71-U02P88YHJ9Y-06cda97abab6-72](https://user-images.githubusercontent.com/33117688/161895975-113f27bf-0a58-4412-acf0-504a2ef38f7a.png)![T02N0MGLH71-U02P5ATGBE1-747812e68c51-72](https://user-images.githubusercontent.com/33117688/161896039-1432c8e0-0df8-44e3-80a7-d5f232e8f716.jpg)![T02N0MGLH71-U02PQ52R5SN-e428bd58d875-72](https://user-images.githubusercontent.com/33117688/161896058-c1ad26af-1cec-4fb4-bd4e-93e7ef82aac5.jpg)
+![1654046675533](https://user-images.githubusercontent.com/33117688/171506137-cc802c67-bef0-4829-8eca-96c4e44bba1b.jpg)
 1. Stone Comstock https://github.com/stone-com (Front end Functionality + Dashboard)  
 2. Namees Albayati https://github.com/namees-github (Backend Functionality)
 3. Mike Sanders https://github.com/Mike-C-Sanders (Frontend Functionality+ login/out authetication)
