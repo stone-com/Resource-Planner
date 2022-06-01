@@ -43,7 +43,7 @@ const Dashboard = () => {
           <Grid item xs={6} md={3}>
             <SummaryCard
               // number={getHoursAvailable(projects, resources)}
-              number={4}
+              number={getHoursAvailable(projects, resources)}
               title={'Hours Available'}
               icon={'fa-hourglass'}
               color={'success'}
@@ -58,7 +58,11 @@ const Dashboard = () => {
             />
           </Grid>
           <Grid item xs={12}>
-            <SectionHeader title={'Projects'} editButton={<EditProjectButton />} addButton={<ProjectButton />} />
+            <SectionHeader
+              title={'Projects'}
+              editButton={<EditProjectButton />}
+              addButton={<ProjectButton />}
+            />
           </Grid>
           <Grid item xs={12}>
             <ProjectList />

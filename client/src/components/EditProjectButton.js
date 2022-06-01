@@ -111,7 +111,7 @@ export default function ProjectButton() {
 
   return (
     <>
-      <Button variant='success' onClick={handleShow} className='m-2'>
+      <Button id='add-new-project-btn' variant='success' onClick={handleShow} className='m-2'>
         Edit Project
       </Button>
 

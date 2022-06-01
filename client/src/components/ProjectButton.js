@@ -121,8 +121,12 @@ export default function ProjectButton() {
 
   return (
     <>
-      <Button id="add-new-project-btn" className='m-2' variant='success' onClick={handleShow}>
-
+      <Button
+        id='add-new-project-btn'
+        className='m-2'
+        variant='success'
+        onClick={handleShow}
+      >
         <AiOutlinePlus />
         Add new project
       </Button>
@@ -133,60 +137,51 @@ export default function ProjectButton() {
         </Modal.Header>
         <Modal.Body>
           <>
+            <Form.Control
+              className='mb-3'
+              type='text'
+              name='title'
+              placeholder='Add Project Name'
+              onChange={handleInputChange}
+            />
 
-              <Form.Control
-                className='mb-3'
-                type='text'
-                name='title'
-                placeholder="Add Project Name"
-                onChange={handleInputChange}
-              />
+            <Form.Control
+              className='mb-3'
+              type='text'
+              name='description'
+              onChange={handleInputChange}
+              placeholder='Add Description'
+            />
 
+            <Form.Select
+              className='mb-3'
+              aria-label='Floating label select example'
+              name='allocation'
+              onChange={handleInputChange}
+            >
+              <option value=''>time allocation</option>
+              <option value={25}>25%</option>
+              <option value={50}>50%</option>
+              <option value={75}>75%</option>
+              <option value={100}>100%</option>
+            </Form.Select>
 
-              <Form.Control
-                className='mb-3'
-                type='text'
-                name='description'
-                onChange={handleInputChange}
-                placeholder="Add Description"
-              />
+            <Form.Control
+              className='mb-3'
+              type='number'
+              min='1'
+              max='50'
+              name='requiredResNumber'
+              onChange={handleInputChange}
+              placeholder='resources required'
+            />
 
-
-
-              <Form.Select
-                className='mb-3'
-                aria-label='Floating label select example'
-                name='allocation'
-                onChange={handleInputChange}
-                >
-                <option value=''>time allocation</option>
-                <option value={25}>25%</option>
-                <option value={50}>50%</option>
-                <option value={75}>75%</option>
-                <option value={100}>100%</option>
-              </Form.Select>
-
-
-           
-              <Form.Control
-               className='mb-3'
-                type='number'
-                min='1'
-                max='50'
-                name='requiredResNumber'
-                onChange={handleInputChange}
-                placeholder="resources required"
-              />
-
-
-           
-              <Form.Control
-                 className='mb-3'
-                type='date'
-                name='createdAt'
-                onChange={handleInputChange}
-              />
-
+            <Form.Control
+              className='mb-3'
+              type='date'
+              name='createdAt'
+              onChange={handleInputChange}
+            />
           </>
 
           <fieldset
@@ -195,21 +190,26 @@ export default function ProjectButton() {
             // onChange={handleInputChange}
           >
             <legend>Choose Assigned Resources Names:</legend>
+            <div className='container'>
+              <div className='row'>
+                {personName.map((name) => (
+                  <div key={name._id} className='col-md-3'>
+                    <input
+                      type='checkbox'
+                      value={name._id}
+                      onChange={handleInputChange}
 
-            {personName.map((name) => (
-              <div key={name._id}>
-                <input
-                  type='checkbox'
-                  value={name._id}
-                  onChange={handleInputChange}
-                  // onClick={(e) => console.log(e)}
-                />
-                <label>
-                  {name.personName}
-                  {name.availability}
-                </label>
+                      // onClick={(e) => console.log(e)}
+                    />
+                    <label>
+                      {name.personName}
+                      <br></br>
+                      {`(${name.availability})`}
+                    </label>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
           </fieldset>
         </Modal.Body>
         <Modal.Footer>
