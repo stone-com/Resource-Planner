@@ -25,10 +25,13 @@ No Installation required. Follow the Heroku link and start using.
 
 
 ## Techniques & Technologies
-1. []() 
+1. [GraphQL](https://www.npmjs.com/package/graphql) 
 2. [Express](https://www.npmjs.com/package/express)
-3. [BCrypt](https://www.npmjs.com/package/bcrypt)
-4. [Sequelize](https://www.npmjs.com/package/sequelize)
+3. [Sequelize](https://www.npmjs.com/package/sequelize)
+4. [React-dom](https://www.npmjs.com/package/react-dom)
+5. [React](https://www.npmjs.com/package/react)
+6. [MongoDB](https://www.mongodb.com/)
+7. [Heroku](https://www.npmjs.com/package/heroku)
 
 
 ## Team members:
@@ -56,6 +59,10 @@ No Installation required. Follow the Heroku link and start using.
         - Warranty
 
 ## Expectation in the future:
+1. Fix all current bugs
+2. Enabling a schedule feature with a calendar
+3. Customer login - dashboard renders based on your customer account not individual user account
+4. Additional data/ charts
+5. Additional info for each project/resource (skills required, deadline, project categories)
 
 
-https://marmelab.com/react-admin/Admin.html
