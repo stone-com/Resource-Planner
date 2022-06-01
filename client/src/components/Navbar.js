@@ -10,17 +10,27 @@ import AuthService from '../utils/auth';
 export default function Navbar() {
   let navigate = useNavigate();
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position='static' sx={{ backgroundColor: 'purple', borderRadius: '15px' }}>
+    <Box sx={{ flexGrow: 1, margin: '0 10px', marginTop: '5px' }}>
+      <AppBar
+        position='static'
+        sx={{ backgroundColor: 'purple', borderRadius: '15px' }}
+      >
         <Toolbar>
           <Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
             Dashboard
           </Typography>
-          <Button color='inherit' onClick = {(e) => {localStorage.removeItem('id_token');e.preventDefault();navigate('/')}}
->Logout</Button>
+          <Button
+            color='inherit'
+            onClick={(e) => {
+              localStorage.removeItem('id_token');
+              e.preventDefault();
+              navigate('/');
+            }}
+          >
+            Logout
+          </Button>
         </Toolbar>
       </AppBar>
     </Box>
   );
 }
-

@@ -26,7 +26,7 @@ const columns = [
     field: 'requiredResources',
     headerName: 'Resources Needed',
     type: 'number',
-    width: 80,
+    width: 120,
   },
   {
     field: 'createdAt',
