@@ -19,8 +19,10 @@ No Installation required. Follow the Heroku link and start using.
 ## Usage
 [Heroku Link](https://resource-planner-group2.herokuapp.com/)
 
-![image](https://user-images.githubusercontent.com/33117688/171063582-b5902e66-c7ae-46cf-9d2f-085c291a7527.png)
 
+![dashboard-top](https://user-images.githubusercontent.com/33117688/171499583-a10207e6-f600-4533-9a69-48af468e01e9.jpg)
+
+![dashboard-bottom](https://user-images.githubusercontent.com/33117688/171499599-4d1e67ca-ad04-47b7-a25f-b25dfc90c8c0.jpg)
 
 
 
