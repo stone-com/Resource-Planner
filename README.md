@@ -11,7 +11,7 @@ Resource Planner was designed for the manager class in companies or organization
 - [License](#Licensing)
 - [Team Members](#teammembers)
 - [Future Development](#future)
-- [Resources](#resources)
+
 
 
 ## Installation
