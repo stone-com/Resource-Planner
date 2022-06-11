@@ -8,7 +8,7 @@ import { GETALL_PROJECTS, GETALL_RESOURCES } from '../utils/queries';
 
 export default function ProjectButton() {
   // bring in resoures and projects from context
-  const { resources, setResources, projects, setProjects, selectedProject } =
+  const { resources, setResources, projects, setProjects, selectedProject,setSelectedProject } =
     useContext(DataContext);
   // show state used for modal
   const [show, setShow] = useState();
@@ -78,8 +78,12 @@ export default function ProjectButton() {
     e.preventDefault();
 
     console.log('form submit data:', formData);
-    setProjects([...projects, formData]);
-
+    console.log(projects)
+    console.log(selectedProject)
+    // setProjects([...projects, formData]);
+    let obj = {...selectedProject[0],...formData}
+    console.log(obj)
+    setSelectedProject([obj]); // we want the fist obj
     // setProjects([...projects, formData]);
     // setProjectResources([]);
     // setFormData([]);

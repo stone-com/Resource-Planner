@@ -24,7 +24,11 @@ export const getHoursAvailable = (projectArray, resourceArray) => {
   const totalHours = resourceArray.length * 40;
   //   create array for total allocation per project (num resources * allocation)
   const totalAllocationArray = [];
+
+  console.log(projectArray)
   projectArray.forEach((project) => {
+    //
+    console.log(project)
     const allocationSum = project.allocation * project.assignedResources.length;
     totalAllocationArray.push(allocationSum);
   });
